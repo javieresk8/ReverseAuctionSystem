@@ -1,5 +1,6 @@
 package com.modelo.entidades;
 
-public class Ofertante {
-
+public class Ofertante extends Persona{
+	
+	public Oferta oferta;
 }
