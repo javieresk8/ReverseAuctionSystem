@@ -47,9 +47,12 @@ public class IngresoOfertaController extends HttpServlet {
 		Oferta oferta=new Oferta();
 		oferta.setRequerimiento(requerimiento);
 		oferta.setValor(ofertaValor);
-		
+		//ingreso oferta
 		OfertaDAO ofertaDao = new OfertaDAO();
 		ofertaDao.create(oferta);
+		
+		String path = "/MostrarRequerimientosController";
+		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 

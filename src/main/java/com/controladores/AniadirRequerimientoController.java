@@ -37,7 +37,7 @@ public class AniadirRequerimientoController extends HttpServlet {
 			entidad.getProyecto().terminar();
 
 		// reenvío a la vista de la entidad contratante
-		String path = "/jsp/admin-requerimientos.html";
+		String path = "ListarRequerimientosController";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 

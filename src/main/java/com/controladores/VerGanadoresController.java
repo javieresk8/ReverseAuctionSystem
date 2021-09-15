@@ -15,23 +15,26 @@ import com.modelo.entidades.EntidadContratante;
 import com.modelo.entidades.Requerimiento;
 import com.modelo.jpa.RequerimientoDAO;
 
-@WebServlet("/MostrarRequerimientosController")
-public class MostrarRequerimientosController extends HttpServlet {
+@WebServlet("/ListarRequerimientosController")
+public class VerGanadoresController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-
+		//
 		
+		Integer numeroDeRequerimiento = Integer.parseInt(request.getParameter("requerimiento"));
+		
+		EntidadContratante entidad = (EntidadContratante) request.getSession().getAttribute("usuarioLogueado");
 		
 		RequerimientoDAO requerimientoDao = new RequerimientoDAO();
+		//TODO ganadores
+		List<Requerimiento> requerimientos= requerimientoDao.obtenerRequerimientosPorProyecto(entidad.getProyecto().getId());
 		
-		List<Requerimiento> requerimientos= requerimientoDao.obtenerRequerimientosPorProyecto(1);//del proyecto 1
-		
-		request.setAttribute("requerimientos", requerimientos);
+		request.setAttribute("ganadores", requerimientos);
 		// reenvío a la vista de la entidad contratante
-		String path = "/jsp/requerimientos.html";
+		String path = "/jsp/ganadores.html";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 		
 	}

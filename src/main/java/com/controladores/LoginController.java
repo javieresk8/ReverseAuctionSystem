@@ -53,13 +53,13 @@ public class LoginController extends HttpServlet {
 				case "EntidadContratante": {
 					EntidadContratante entidadContratante = (EntidadContratante) personaAutorizada;
 					sesion.setAttribute("usuarioLogueado", entidadContratante);
-					request.getRequestDispatcher("/jsp/admin-requerimientos.html").forward(request, response);
+					request.getRequestDispatcher("/ListarRequerimientosController").forward(request, response);
 					break;
 				}
 				case "Ofertante": {
 					Ofertante ofertante = (Ofertante) personaAutorizada;
 					sesion.setAttribute("usuarioLogueado", ofertante);
-					request.getRequestDispatcher("/jsp/requerimientos.html").forward(request, response);
+					request.getRequestDispatcher("/MostrarRequerimientosController").forward(request, response);
 					break;
 				}
 				default:
