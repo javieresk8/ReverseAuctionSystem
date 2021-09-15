@@ -21,11 +21,6 @@ public class EntidadContratante extends Persona implements Serializable{
 		super();
 		this.setTipoDeUsuario("EntidadContratante");
 	}
-	
-
-	public void agregarRequerimiento() {
-		
-	}
 
 	public Proyecto getProyecto() {
 		return proyecto;
@@ -34,5 +29,11 @@ public class EntidadContratante extends Persona implements Serializable{
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
 	}
+
+	@Override
+	public String toString() {
+		return "EntidadContratante [" + super.toString() + "proyecto=" + proyecto.getNombre() + "]";
+	}
+	
 	
 }

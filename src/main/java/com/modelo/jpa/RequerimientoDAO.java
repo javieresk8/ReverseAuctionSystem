@@ -1,6 +1,12 @@
 package com.modelo.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
+
+
+import javax.persistence.Query;
+
+import com.modelo.entidades.Proyecto;
 
 import com.modelo.entidades.Requerimiento;
 
@@ -12,7 +18,14 @@ public class RequerimientoDAO extends GenericDAO<Requerimiento, Integer> {
 	}
 
 	public List<Requerimiento> obtenerRequerimientosPorProyecto(Integer idProyecto) {
-		// TODO Auto-generated method stub
-		return null;
+		String sentenciaSQL = "SELECT r.idRequerimiento FROM requerimiento r WHERE r.proyecto = " + idProyecto + ";";
+		Query query = em.createNativeQuery(sentenciaSQL);
+		@SuppressWarnings("unchecked")
+		List<Integer> resultado1 = query.getResultList();
+		List<Requerimiento> requerimientos = new ArrayList<Requerimiento>();
+		for(Integer i: resultado1) {
+			requerimientos.add(new RequerimientoDAO().getById(i));
+		}
+		return requerimientos;
 	}
 }

@@ -23,15 +23,11 @@ public class Proyecto implements Serializable{
 	private String nombre;
 	
 	@Column(name="estado")
-	private Boolean estado;//null es no iniciado, true es que está abierto y false es que está cerrado
-
-	//private ArrayList<Requerimiento> requerimientos;
-	
-	//@OneToMany(cascade = CascadeType.ALL, mappedBy = "proyecto")
-	//private Set<Requerimiento> requerimientos = new HashSet<Requerimiento>();
+	private Boolean estado;	//null es no iniciado, true es que está abierto y false es que está cerrado
 	
 	public Proyecto() {
 		super();
+		estado = true;
 	}
 
 	public void iniciar() {
@@ -47,27 +43,7 @@ public class Proyecto implements Serializable{
 			if(estado== null)//verifico que esté iniciado
 				this.estado= false;
 	}
-	/*
-	public void agregarRequerimiento(Requerimiento requerimiento) {
-		requerimientos.add(requerimiento);
-	}
 
-	public ArrayList<Requerimiento> getRequerimientos() {
-		return requerimientos;
-	}
-
-	public void setRequerimientos(ArrayList<Requerimiento> requerimientos) {
-		this.requerimientos = requerimientos;
-	}
-
-	public String getNombreDeProyecto() {
-		return nombreDeProyecto;
-	}
-
-	public void setNombreDeProyecto(String nombreDeProyecto) {
-		this.nombreDeProyecto = nombreDeProyecto;
-	}
-	*/
 	public Boolean getEstado() {
 		return estado;
 	}
@@ -83,5 +59,12 @@ public class Proyecto implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	@Override
+	public String toString() {
+		return "Proyecto [id=" + id + ", nombre=" + nombre + ", estado=" + estado + "]";
+	}
+	
+	
 
 }

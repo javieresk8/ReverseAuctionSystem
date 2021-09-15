@@ -70,5 +70,11 @@ public class Persona {
 		this.tipoDeUsuario = tipoDeUsuario;
 	}
 
+	@Override
+	public String toString() {
+		return "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula
+				+ ", tipoDeUsuario=" + tipoDeUsuario;
+	}
+
 	
 }

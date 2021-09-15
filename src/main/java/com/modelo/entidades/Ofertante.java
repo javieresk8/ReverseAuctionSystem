@@ -34,6 +34,13 @@ public class Ofertante extends Persona implements Serializable{
 	public void setOferta(Oferta oferta) {
 		this.oferta = oferta;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Ofertante [" + super.toString() + ", oferta=" + oferta + "]";
+	}
 	
 	
 }

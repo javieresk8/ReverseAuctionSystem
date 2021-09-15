@@ -38,7 +38,7 @@ public class GenericDAO<T, ID> {
 		
 	}
 
-	public void update(T entity) throws SQLException {
+	public void update(T entity){
 		em.getTransaction().begin();
 		try {
 			em.merge(entity);
@@ -52,7 +52,7 @@ public class GenericDAO<T, ID> {
 		
 	}
 
-	public void deleteById(ID idPersona) throws SQLException {
+	public void deleteById(ID idPersona){
 		T entity = this.getById(idPersona);
 		em.getTransaction().begin();
 		em.remove(entity);

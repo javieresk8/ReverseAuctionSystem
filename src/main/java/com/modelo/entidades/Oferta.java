@@ -27,7 +27,7 @@ public class Oferta implements Serializable{
 	@Column(name="valor")
 	private int valor;//en centavos según el internet
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="requerimiento")
 	private Requerimiento requerimiento;
 
@@ -55,6 +55,11 @@ public class Oferta implements Serializable{
 
 	public void setRequerimiento(Requerimiento requerimiento) {
 		this.requerimiento = requerimiento;
+	}
+
+	@Override
+	public String toString() {
+		return "Oferta [id=" + id + ", valor=" + valor + ", requerimiento=" + requerimiento + "]";
 	}
 	
 	

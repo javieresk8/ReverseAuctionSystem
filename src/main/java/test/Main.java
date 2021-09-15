@@ -76,28 +76,81 @@ public class Main {
 		//testOneSizeOkaUchi();
 		
 		//JPA
-		//Create
+		
+		//Crear yactualizar proyecto y requerimientos
+		/*
+		Proyecto pro = new Proyecto();
+		pro.setNombre("PRJ2");
+		
+		Requerimiento r1 = new Requerimiento("R2", "ListarPersonas");
+		r1.setPrecio(90);
+		r1.setProyecto(pro);
+		
+		Proyecto pro1 = new ProyectoDAO().getById(1);
+		
+		Requerimiento r2 = new Requerimiento("R3", "InsertarPersonas");
+		r2.setPrecio(85);
+		r2.setProyecto(pro1);
+		
+		RequerimientoDAO dao0 = new RequerimientoDAO();
+		dao0.create(r1);
+		dao0.create(r2);
+		*/
+		
+		//Crear y actualizar oferta
+		/*
+		Oferta o = new Oferta();
+		o.setValor(50);
+		o.setRequerimiento(r1);
+		
+		OfertaDAO dao1 = new OfertaDAO();
+		dao1.create(o);
+		Oferta oferta = dao1.getById(1);
+		*/
+		
+		//Crear ofertante
 		/*
 		Ofertante p = new Ofertante();
 		p.setNombre("Jorge");
 		p.setApellido("Guitierrez");
 		p.setCedula("1201384060");
-		OfertanteDAO dao = new OfertanteDAO();
-		dao.create(p);
+		p.setOferta(oferta);
+		OfertanteDAO dao2 = new OfertanteDAO();
+		dao2.create(p);
+		 */
+		
+		//MERGE REQUERIMIENTO
+		/*
+		ProyectoDAO dao3 = new ProyectoDAO();
+		Proyecto pr = dao3.getById(2);
+	
+		RequerimientoDAO dao4 = new RequerimientoDAO();
+		Requerimiento r1 = new Requerimiento("R9", "Test2");
+		r1.setPrecio(90);
+		r1.setProyecto(pr);
+		dao4.create(r1);
 		*/
-		Proyecto pro = new Proyecto();
-		pro.setNombre("PRJ1");
 		
-		Requerimiento r1 = new Requerimiento();
-		r1.setPrecio(45);
-		r1.setProyecto(pro);
+		//Requerimientos por Proyecto
+		RequerimientoDAO dao = new RequerimientoDAO();
+		for(Requerimiento r: dao.obtenerRequerimientosPorProyecto(2)) {
+			System.out.println(r.toString());
+		}
 		
-		Oferta o = new Oferta();
-		o.setValor(50);
-		o.setRequerimiento(r1);
+		//MERGE OFERTA
+		Requerimiento b = new RequerimientoDAO().getById(1);
 		
-		OfertaDAO dao = new OfertaDAO();
-		dao.create(o);
+		OfertaDAO dao2 = new OfertaDAO();
+		Oferta a = new Oferta();
+		a.setValor(444);
+		a.setRequerimiento(b);
+		dao2.create(a);
+		
+		//Ofertas por Requerimiento
+		OfertaDAO dao1 = new OfertaDAO();
+		for(Oferta o: dao1.getOfertasByRequerimiento(1)) {
+			System.out.println(o.toString());
+		}
 		
 	}
 }

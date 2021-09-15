@@ -1,6 +1,7 @@
 package com.modelo.entidades;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,12 +33,7 @@ public class Requerimiento implements Serializable{
 	@Column(name="descripcion")
 	private String descripcion;
 	
-	/*
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "requerimiento")
-	private Set<Oferta> listaDeOfertas = new HashSet<Oferta>();
-	*/
-	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="proyecto")
 	private Proyecto proyecto;
 	
@@ -50,12 +46,6 @@ public class Requerimiento implements Serializable{
 		descripcion= descripcionRequerimiento;
 	}
 
-	/*
-	public void añadirOferta(Oferta ofertaAAnaiadir) {
-		listaDeOfertas.add(ofertaAAnaiadir);
-	}
-	*/
-
 	public int getPrecio() {
 		return precio;
 	}
@@ -63,20 +53,7 @@ public class Requerimiento implements Serializable{
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-	
-	/*
-	public ArrayList<Oferta> getListaDeOfertas() {
-		return listaDeOfertas;
-	}
 
-	public void setListaDeOfertas(ArrayList<Oferta> listaDeOfertas) {
-		this.listaDeOfertas = listaDeOfertas;
-	}
-	
-	public void añadirOferta(Oferta ofertaAAnaiadir) {
-		listaDeOfertas.add(ofertaAAnaiadir);
-	}
-	*/
 	public String getNombre() {
 		return nombre;
 	}
@@ -92,16 +69,7 @@ public class Requerimiento implements Serializable{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	/*
-	public Set<Oferta> getListaDeOfertas() {
-		return listaDeOfertas;
-	}
-	
 
-	public void setListaDeOfertas(Set<Oferta> listaDeOfertas) {
-		this.listaDeOfertas = listaDeOfertas;
-	}
-	*/
 
 	public Proyecto getProyecto() {
 		return proyecto;
@@ -112,5 +80,11 @@ public class Requerimiento implements Serializable{
 		this.proyecto = proyecto;
 	}
 	
+	@Override
+	public String toString() {
+		return "Requerimiento [id=" + id + ", precio=" + precio + ", nombre=" + nombre + ", descripcion=" + descripcion
+				+ ", proyecto=" + proyecto + "]";
+	}
+
 	
 }
