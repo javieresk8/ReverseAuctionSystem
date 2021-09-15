@@ -28,4 +28,6 @@ public class RequerimientoDAO extends GenericDAO<Requerimiento, Integer> {
 		}
 		return requerimientos;
 	}
+	
+	
 }

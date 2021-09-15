@@ -60,6 +60,15 @@ public class Proyecto implements Serializable{
 		this.nombre = nombre;
 	}
 
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "Proyecto [id=" + id + ", nombre=" + nombre + ", estado=" + estado + "]";

@@ -45,6 +45,15 @@ public class Requerimiento implements Serializable{
 		nombre = nombreRequerimiento;
 		descripcion= descripcionRequerimiento;
 	}
+	
+	
+
+	public Requerimiento(String nombre, String descripcion, Proyecto proyecto) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.proyecto = proyecto;
+	}
 
 	public int getPrecio() {
 		return precio;

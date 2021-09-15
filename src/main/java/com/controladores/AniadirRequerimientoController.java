@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.modelo.entidades.EntidadContratante;
 import com.modelo.entidades.Requerimiento;
+import com.modelo.jpa.RequerimientoDAO;
 
 @WebServlet("/AniadirRequerimientoController")
 public class AniadirRequerimientoController extends HttpServlet {
@@ -46,16 +47,18 @@ public class AniadirRequerimientoController extends HttpServlet {
 		String nombreRequerimiento = request.getParameter("nombreRequerimiento");
 		String descripcionRequerimiento = request.getParameter("descripcionRequerimiento");
 
-		Requerimiento requerimiento = new Requerimiento(nombreRequerimiento, descripcionRequerimiento);
-
 		// session
 		HttpSession sesion = request.getSession();
 		// seteo objeto entidad
 		EntidadContratante entidad = (EntidadContratante) sesion.getAttribute("usuarioLogueado");
 
-		// agrego requerimiento
-		entidad.getProyecto().agregarRequerimiento(requerimiento);
 
+		Requerimiento requerimiento = new Requerimiento(nombreRequerimiento, descripcionRequerimiento,
+																				entidad.getProyecto());
+
+		// agrego requerimiento
+		RequerimientoDAO reu=new RequerimientoDAO();
+		reu.create(requerimiento);
 		// reenvío a la vista de la entidad contratante
 		String path = "/ListarRequerimientosController";
 		getServletContext().getRequestDispatcher(path).forward(request, response);

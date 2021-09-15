@@ -11,12 +11,15 @@ import javax.servlet.http.HttpSession;
 import com.modelo.entidades.EntidadContratante;
 import com.modelo.entidades.Oferta;
 import com.modelo.entidades.Ofertante;
+import com.modelo.entidades.Requerimiento;
+import com.modelo.jpa.OfertaDAO;
+import com.modelo.jpa.RequerimientoDAO;
 
 @WebServlet("/IngresoOfertaController")
 public class IngresoOfertaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public Oferta oferta;
+	
 
 	public IngresoOfertaController() {
 		super();
@@ -31,23 +34,24 @@ public class IngresoOfertaController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Integer oferta = Integer.parseInt(request.getParameter("oferta"));
+		Integer ofertaValor = Integer.parseInt(request.getParameter("ofertaValor"));
+		Integer requerimientoId = Integer.parseInt(request.getParameter("requerimientoId"));
 		// session
 		HttpSession sesion = request.getSession();
 		// seteo objeto entidad
 		Ofertante ofertante = (Ofertante) sesion.getAttribute("usuarioLogueado");
+		
+		RequerimientoDAO requerimientoDao= new RequerimientoDAO();
+		Requerimiento requerimiento=requerimientoDao.getById(requerimientoId);
+		
+		Oferta oferta=new Oferta();
+		oferta.setRequerimiento(requerimiento);
+		oferta.setValor(ofertaValor);
+		
+		OfertaDAO ofertaDao = new OfertaDAO();
+		ofertaDao.create(oferta);
 	}
 
-	public boolean guardarOferta() {
-		return false;
-	}
 
-	public Oferta getOferta() {
-		return oferta;
-	}
-
-	public void setOferta(Oferta oferta) {
-		this.oferta = oferta;
-	}
 
 }

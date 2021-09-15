@@ -15,8 +15,8 @@ import com.modelo.entidades.EntidadContratante;
 import com.modelo.entidades.Requerimiento;
 import com.modelo.jpa.RequerimientoDAO;
 
-@WebServlet("/ListarRequerimientosController")
-public class MostrarRequerimientosController2 extends HttpServlet {
+@WebServlet("/MostrarRequerimientosController")
+public class MostrarRequerimientosController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
