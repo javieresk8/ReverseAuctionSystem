@@ -1,11 +1,30 @@
 package com.modelo.entidades;
 
-public class EntidadContratante extends Persona {
+import java.io.Serializable;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
+@DiscriminatorValue("EntidadContratante")
+public class EntidadContratante extends Persona implements Serializable{		
+
+	private static final long serialVersionUID = 1L;
 	
+	@OneToOne
+	@JoinColumn(name="proyecto")
 	private Proyecto proyecto;
 	
-	public void agregarRequerimiento(Requerimiento requerimiento) {
-		proyecto.agregarRequerimiento(requerimiento);
+	public EntidadContratante() {
+		super();
+		this.setTipoDeUsuario("EntidadContratante");
+	}
+	
+
+	public void agregarRequerimiento() {
+		
 	}
 
 	public Proyecto getProyecto() {
@@ -15,6 +34,5 @@ public class EntidadContratante extends Persona {
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
 	}
-	
 	
 }

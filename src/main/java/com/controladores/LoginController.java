@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import com.modelo.entidades.EntidadContratante;
 import com.modelo.entidades.Ofertante;
 import com.modelo.entidades.Persona;
-import com.modelo.jpa.PersonaDAO;
 
 
 
