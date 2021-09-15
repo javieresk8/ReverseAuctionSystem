@@ -27,19 +27,22 @@ public class LoginController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Get en Login");
-		String path = "/jsp/login.jsp";
+		String path = "/jsp/index.html";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Post en Login");
-		String cedula = request.getParameter("txtCedula");
-		String passwordHash = this.hashearClave(request.getParameter("txtPassword"));//clave hasheada
+		String cedula = request.getParameter("email");
+		String passwordHash = this.hashearClave(request.getParameter("password"));//clave hasheada
 		
 		//session
 		HttpSession sesion = request.getSession();
-		Persona personaAutorizada = this.autorizar(cedula, passwordHash);
+		
+		PersonaDAO personaAAurotizar = new PersonaDAO();
+		EntidadContratante s= new EntidadContratante();
+		Persona personaAutorizada = personaAAurotizar.autorizar(cedula, passwordHash);
 		
 		//verificar
 		if(personaAutorizada==null) {
@@ -50,13 +53,13 @@ public class LoginController extends HttpServlet {
 				case "EntidadContratante": {
 					EntidadContratante entidadContratante = (EntidadContratante) personaAutorizada;
 					sesion.setAttribute("usuarioLogueado", entidadContratante);
-					request.getRequestDispatcher("/jsp/").forward(request, response);
+					request.getRequestDispatcher("/jsp/admin-requerimientos.html").forward(request, response);
 					break;
 				}
 				case "Ofertante": {
 					Ofertante ofertante = (Ofertante) personaAutorizada;
 					sesion.setAttribute("usuarioLogueado", ofertante);
-					request.getRequestDispatcher("/jsp/").forward(request, response);
+					request.getRequestDispatcher("/jsp/requerimientos.html").forward(request, response);
 					break;
 				}
 				default:
@@ -73,10 +76,7 @@ public class LoginController extends HttpServlet {
 		return null;
 	}
 
-	private Persona autorizar(String cedula, String passwordHash) {
-		return null;
-		
-	}
+
 	
 
 }
