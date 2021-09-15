@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import com.modelo.entidades.EntidadContratante;
 import com.modelo.entidades.Requerimiento;
 
-@WebServlet("/EntidadRequerimientoController")
-public class EntidadRequerimientoController extends HttpServlet {
+@WebServlet("/AniadirRequerimientoController")
+public class AniadirRequerimientoController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -57,7 +57,7 @@ public class EntidadRequerimientoController extends HttpServlet {
 		entidad.getProyecto().agregarRequerimiento(requerimiento);
 
 		// reenvío a la vista de la entidad contratante
-		String path = "/jsp/admin-requerimientos.html";
+		String path = "/ListarRequerimientosController";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
