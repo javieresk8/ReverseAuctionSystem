@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import com.modelo.entidades.Ofertante;
 import com.modelo.entidades.Proyecto;
 
 import com.modelo.entidades.Requerimiento;
@@ -29,5 +30,9 @@ public class RequerimientoDAO extends GenericDAO<Requerimiento, Integer> {
 		return requerimientos;
 	}
 	
+	//por requerimiento
+	public Ofertante getGanador(Requerimiento requerimiento) {
+		return null;
+	}
 	
 }

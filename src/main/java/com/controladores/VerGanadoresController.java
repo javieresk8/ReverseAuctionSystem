@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.modelo.entidades.EntidadContratante;
+import com.modelo.entidades.Ofertante;
 import com.modelo.entidades.Requerimiento;
 import com.modelo.jpa.RequerimientoDAO;
 
@@ -26,13 +27,12 @@ public class VerGanadoresController extends HttpServlet {
 		
 		Integer numeroDeRequerimiento = Integer.parseInt(request.getParameter("requerimiento"));
 		
-		EntidadContratante entidad = (EntidadContratante) request.getSession().getAttribute("usuarioLogueado");
-		
 		RequerimientoDAO requerimientoDao = new RequerimientoDAO();
-		//TODO ganadores
-		List<Requerimiento> requerimientos= requerimientoDao.obtenerRequerimientosPorProyecto(entidad.getProyecto().getId());
 		
-		request.setAttribute("ganadores", requerimientos);
+		
+		Ofertante ofertante= requerimientoDao.getGanador(requerimientoDao.getById(numeroDeRequerimiento));
+		
+		request.setAttribute("ofertante", ofertante);
 		// reenvío a la vista de la entidad contratante
 		String path = "/jsp/ganadores.html";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
