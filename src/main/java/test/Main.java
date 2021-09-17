@@ -138,6 +138,7 @@ public class Main {
 		}
 		
 		//MERGE OFERTA
+		/*
 		Requerimiento b = new RequerimientoDAO().getById(1);
 		
 		OfertaDAO dao2 = new OfertaDAO();
@@ -145,12 +146,30 @@ public class Main {
 		a.setValor(444);
 		a.setRequerimiento(b);
 		dao2.create(a);
-		
+		*/
+		/*
 		//Ofertas por Requerimiento
 		OfertaDAO dao1 = new OfertaDAO();
 		for(Oferta o: dao1.getOfertasByRequerimiento(1)) {
 			System.out.println(o.toString());
 		}
+		*/
+		/*
+		Oferta o = new Oferta();
+		o.setValor(50);
+		o.setRequerimiento(new RequerimientoDAO().getById(7));
 		
+		OfertaDAO dao1 = new OfertaDAO();
+		dao1.create(o);
+		Oferta oferta = dao1.getById(1);
+		
+		Ofertante of = new Ofertante();
+		of.setOferta(o);
+		
+		OfertanteDAO dao2 = new OfertanteDAO();
+		dao2.create(of);
+		*/
+		
+		System.out.println(new OfertanteDAO().autorizar("1201384060", "1234"));
 	}
 }

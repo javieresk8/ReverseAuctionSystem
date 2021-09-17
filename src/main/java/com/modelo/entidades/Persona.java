@@ -28,6 +28,9 @@ public class Persona {
 	@Column(name = "cedula")
 	private String cedula;
 	
+	@Column(name = "password")
+	private String clave;
+	
 	@Column(name = "tipoUsuario")
 	private String tipoDeUsuario;
 	
@@ -63,6 +66,15 @@ public class Persona {
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
+	
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
 	public String getTipoDeUsuario() {
 		return tipoDeUsuario;
 	}

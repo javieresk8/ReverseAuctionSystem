@@ -2,10 +2,10 @@ package com.modelo.jpa;
 
 import com.modelo.entidades.Ofertante;
 
-public class OfertanteDAO extends GenericDAO<Ofertante,Integer>{
+public class OfertanteDAO extends PersonaDAO<Ofertante,Integer>{
 
 	public OfertanteDAO() {
-		super(Ofertante.class);
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
