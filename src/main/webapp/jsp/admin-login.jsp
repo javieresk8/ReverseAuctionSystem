@@ -10,7 +10,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/bootstrap.min.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Raleway:100,400"
       rel="stylesheet"

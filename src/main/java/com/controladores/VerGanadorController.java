@@ -24,7 +24,7 @@ public class VerGanadorController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-		//proceso homomórfico y devolver un ofertante ganador
+		//proceso homomï¿½rfico y devolver un ofertante ganador
 		
 		
 		
@@ -32,8 +32,8 @@ public class VerGanadorController extends HttpServlet {
 		Ofertante ofertante= ofertanteDao.getGanador();
 		
 		request.setAttribute("ofertante", ofertante);
-		// reenvío a la vista de la entidad contratante
-		String path = "/jsp/ganadores.jsp";
+		// reenvï¿½o a la vista de la entidad contratante
+		String path = "/jsp/admin-ver-ganador.jsp";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 		
 	}

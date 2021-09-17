@@ -48,12 +48,6 @@ public class Ofertante extends Persona implements Serializable{
 		//return "Ofertante [" + super.toString() + ", oferta=" + oferta + "]";
 		return "Ofertante [" + super.toString() + "]";
 	}
-
-
-	public void añadirOferta(Integer ofertaValor) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	
 }

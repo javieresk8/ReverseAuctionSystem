@@ -16,38 +16,33 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/custom.css" />
-    <title>Administrar Requerimientos</title>
+    <title>Ganador Subasta</title>
   </head>
   <body>
     <div class="container">
       <header>
-        <h1 class="text-center">Bienvenido</h1>
+        <h1 class="text-center">Ha Terminado la Subasta</h1>
       </header>
       
         <div class="contenido-principal">
           <div class="row">
             <div class="contenido primario col">
-              <h2 class="text-center">Administra tus requerimientos</h2>
+              <h2 class="text-center">El Ganador de la Subasta es</h2>
               <div class="row">
-                <c:forEach var="requerimiento" items="${requerimientos}">
-            		<div class="card col-4 mt-3">
-	                    <h2 class="card-title font-weight-bold">${requerimiento.nombre}</h2>
-	                    <p>
-	                      <span class="font-weight-bold">Descripción:</span> ${requerimiento.descripcion}
-	                    </p>
+                
+                  <div class="text-center col">
+                    <h3 class="text-success">Nombre de la Empresa</h3>
+                    <p class="font-size-large">${ofertante.nombre} ${ofertante.apellido}</p>
+                    <h3 class="text-success">Oferta Final Ganadora</h3>
+                    <p class="font-weight-bold">${ofertante.sumaOfertas} $</p>
                   </div>
-            	</c:forEach> 
+                
+
               </div>
               <!--requerimientos-->
               <div class="row mt-4 justify-content-center">
-              	<div class="col-3 ">
-                  <a href="LogoutController" class="btn btn-warning col">SALIR</a>
-                </div>
-                <div class="col-3 ">
-                  <a href="VerGanadorController" class="btn btn-danger col">Terminar Subasta</a>
-                </div>
                 <div class="col-3">
-                <a href = "AniadirRequerimientoController"class="btn btn-success col">Agregar Requerimiento</a>
+                  <a href = "LogoutController"class="btn btn-warning col">Salir</a>
                 </div>
               </div>
             </div>

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
-
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/main.css">
 
 </head>
@@ -64,6 +64,9 @@
                 	</li>
             	</c:forEach> 
             </ul>
+            <div class="row justify-content-center">
+                <a class="btn button" href="LogoutController">Salir</a>
+            </div>
         </div>
     </section>
     <!--seccion-->

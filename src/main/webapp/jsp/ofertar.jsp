@@ -58,9 +58,6 @@
                     <div class="campo">
                         <input type="number" id="ofertaValor" name="ofertaValor" placeholder="Tu Oferta en USD">
                     </div>
-                    <div >
-                        <input type="hidden" id="requerimientoId" name="requerimientoId" value="${requerimiento.id }">
-                    </div>
                     <input id="btnIngresar" type="submit" name="submit" class="button" value="Enviar Oferta">
                     <div id="error"></div>
                 </div>
