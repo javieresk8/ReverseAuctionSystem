@@ -27,7 +27,7 @@ public class MostrarRequerimientosController extends HttpServlet {
 		
 		RequerimientoDAO requerimientoDao = new RequerimientoDAO();
 		
-		List<Requerimiento> requerimientos= requerimientoDao.obtenerRequerimientosPorProyecto(1);//del proyecto 1
+		List<Requerimiento> requerimientos= requerimientoDao.obtenerRequerimientosPorProyecto();
 		
 		request.setAttribute("requerimientos", requerimientos);
 		// reenvío a la vista de la entidad contratante

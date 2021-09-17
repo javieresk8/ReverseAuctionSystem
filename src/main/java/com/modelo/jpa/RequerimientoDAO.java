@@ -18,6 +18,7 @@ public class RequerimientoDAO extends GenericDAO<Requerimiento, Integer> {
 		// TODO Auto-generated constructor stub
 	}
 
+	//ya no necesitamos ese id
 	public List<Requerimiento> obtenerRequerimientosPorProyecto(Integer idProyecto) {
 		String sentenciaSQL = "SELECT r.idRequerimiento FROM requerimiento r WHERE r.proyecto = " + idProyecto + ";";
 		Query query = em.createNativeQuery(sentenciaSQL);
@@ -30,9 +31,23 @@ public class RequerimientoDAO extends GenericDAO<Requerimiento, Integer> {
 		return requerimientos;
 	}
 	
-	//por requerimiento
-	public Ofertante getGanador(Requerimiento requerimiento) {
-		return null;
+	
+	
+
+	@Override
+	public void create(Requerimiento entity) {//algoritmo homomórfico cifrar, ver lo cifrado en la bd, sumar e ingresar
+		em.getTransaction().begin();
+		try {
+			em.persist(entity);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			System.out.println("Error" + e);
+			if(em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+		}
 	}
+	
+	
 	
 }

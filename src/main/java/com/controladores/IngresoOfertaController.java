@@ -28,6 +28,12 @@ public class IngresoOfertaController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Integer requerimientoId = Integer.parseInt(request.getParameter("requerimientoId"));
+		
+		RequerimientoDAO requerimientoDao = new RequerimientoDAO();
+		Requerimiento requerimiento=requerimientoDao.getById(requerimientoId);
+		
+		request.setAttribute("requerimiento", requerimiento);
 		String path = "/jsp/ofertar.html";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
@@ -36,6 +42,7 @@ public class IngresoOfertaController extends HttpServlet {
 			throws ServletException, IOException {
 		Integer ofertaValor = Integer.parseInt(request.getParameter("ofertaValor"));
 		Integer requerimientoId = Integer.parseInt(request.getParameter("requerimientoId"));
+		
 		// session
 		HttpSession sesion = request.getSession();
 		// seteo objeto entidad
@@ -45,12 +52,11 @@ public class IngresoOfertaController extends HttpServlet {
 		Requerimiento requerimiento=requerimientoDao.getById(requerimientoId);
 		
 		Oferta oferta=new Oferta();
-		oferta.setRequerimiento(requerimiento);
 		oferta.setValor(ofertaValor);
 		//ingreso oferta
 		OfertaDAO ofertaDao = new OfertaDAO();
 		ofertaDao.create(oferta);
-		
+		//preguntar a erick cómo meter oferta
 		String path = "/MostrarRequerimientosController";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}

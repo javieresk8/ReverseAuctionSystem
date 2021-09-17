@@ -23,11 +23,12 @@ public class ListarRequerimientosController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
-		EntidadContratante entidad = (EntidadContratante) request.getSession().getAttribute("usuarioLogueado");
+		//EntidadContratante entidad = (EntidadContratante) request.getSession().getAttribute("usuarioLogueado");
 		
 		RequerimientoDAO requerimientoDao = new RequerimientoDAO();
 		
-		List<Requerimiento> requerimientos= requerimientoDao.obtenerRequerimientosPorProyecto(entidad.getProyecto().getId());
+		//método sin id de proyecto brah
+		List<Requerimiento> requerimientos= requerimientoDao.obtenerRequerimientosPorProyecto();
 		
 		request.setAttribute("requerimientos", requerimientos);
 		// reenvío a la vista de la entidad contratante

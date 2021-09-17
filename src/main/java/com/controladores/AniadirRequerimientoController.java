@@ -19,25 +19,11 @@ public class AniadirRequerimientoController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	//llama por get para mostrar formulario
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// get para setear estado
-		// parámetro que se me envía para iniciar o terminar un proyecto
-		Boolean cedula = Boolean.parseBoolean(request.getParameter("estado"));
-
-		// session
-		HttpSession sesion = request.getSession();
-		// seteo objeto entidad
-		EntidadContratante entidad = (EntidadContratante) sesion.getAttribute("usuarioLogueado");
-
-		if (cedula)
-			entidad.getProyecto().iniciar();
-		else
-			entidad.getProyecto().terminar();
-
-		// reenvío a la vista de la entidad contratante
-		String path = "ListarRequerimientosController";
+		String path = "/jsp/admin-agregar-req.html";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
@@ -47,14 +33,12 @@ public class AniadirRequerimientoController extends HttpServlet {
 		String nombreRequerimiento = request.getParameter("nombreRequerimiento");
 		String descripcionRequerimiento = request.getParameter("descripcionRequerimiento");
 
-		// session
+		/*/ session
 		HttpSession sesion = request.getSession();
 		// seteo objeto entidad
-		EntidadContratante entidad = (EntidadContratante) sesion.getAttribute("usuarioLogueado");
+		EntidadContratante entidad = (EntidadContratante) sesion.getAttribute("usuarioLogueado");*/
 
-
-		Requerimiento requerimiento = new Requerimiento(nombreRequerimiento, descripcionRequerimiento,
-																				entidad.getProyecto());
+		Requerimiento requerimiento = new Requerimiento(nombreRequerimiento, descripcionRequerimiento);
 
 		// agrego requerimiento
 		RequerimientoDAO reu=new RequerimientoDAO();

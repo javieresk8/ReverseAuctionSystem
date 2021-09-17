@@ -14,23 +14,22 @@ import javax.servlet.http.HttpSession;
 import com.modelo.entidades.EntidadContratante;
 import com.modelo.entidades.Ofertante;
 import com.modelo.entidades.Requerimiento;
+import com.modelo.jpa.OfertanteDAO;
 import com.modelo.jpa.RequerimientoDAO;
 
-@WebServlet("/ListarRequerimientosController")
-public class VerGanadoresController extends HttpServlet {
+@WebServlet("/VerGanadorController")
+public class VerGanadorController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-		//
-		
-		Integer numeroDeRequerimiento = Integer.parseInt(request.getParameter("requerimiento"));
-		
-		RequerimientoDAO requerimientoDao = new RequerimientoDAO();
+		//proceso homomórfico y devolver un ofertante ganador
 		
 		
-		Ofertante ofertante= requerimientoDao.getGanador(requerimientoDao.getById(numeroDeRequerimiento));
+		
+		OfertanteDAO ofertanteDao = new OfertanteDAO();
+		Ofertante ofertante= ofertanteDao.getGanador();
 		
 		request.setAttribute("ofertante", ofertante);
 		// reenvío a la vista de la entidad contratante

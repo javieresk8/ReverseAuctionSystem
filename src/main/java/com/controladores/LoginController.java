@@ -42,7 +42,8 @@ public class LoginController extends HttpServlet {
 		
 		PersonaDAO personaAAurotizar = new PersonaDAO();
 		EntidadContratante s= new EntidadContratante();
-		Persona personaAutorizada = personaAAurotizar.autorizar(cedula, passwordHash);
+		Persona personaAutorizada = (Persona) personaAAurotizar.autorizar(cedula, passwordHash);
+													//cedula y password hasheada
 		
 		//verificar
 		if(personaAutorizada==null) {
@@ -71,6 +72,7 @@ public class LoginController extends HttpServlet {
 		doGet(request, response);
 	}
 
+	//hash
 	private String hashearClave(String clave) {
 		
 		return null;
