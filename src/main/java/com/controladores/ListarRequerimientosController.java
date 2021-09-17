@@ -32,7 +32,7 @@ public class ListarRequerimientosController extends HttpServlet {
 		
 		request.setAttribute("requerimientos", requerimientos);
 		// reenvío a la vista de la entidad contratante
-		String path = "/jsp/admin-requerimientos.html";
+		String path = "/jsp/admin-requerimientos.jsp";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 		
 	}

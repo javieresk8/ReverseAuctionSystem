@@ -35,7 +35,7 @@ public class IngresoOfertaController extends HttpServlet {
 		Requerimiento requerimiento=requerimientoDao.getById(requerimientoId);
 		
 		request.setAttribute("requerimiento", requerimiento);
-		String path = "/jsp/ofertar.html";
+		String path = "/jsp/ofertar.jsp";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 

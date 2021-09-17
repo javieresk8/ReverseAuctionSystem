@@ -23,7 +23,7 @@ public class AniadirRequerimientoController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String path = "/jsp/admin-agregar-req.html";
+		String path = "/jsp/admin-agregar-req.jsp";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 

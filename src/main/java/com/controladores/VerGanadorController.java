@@ -33,7 +33,7 @@ public class VerGanadorController extends HttpServlet {
 		
 		request.setAttribute("ofertante", ofertante);
 		// reenvío a la vista de la entidad contratante
-		String path = "/jsp/ganadores.html";
+		String path = "/jsp/ganadores.jsp";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 		
 	}

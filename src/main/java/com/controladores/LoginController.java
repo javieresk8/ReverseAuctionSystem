@@ -27,7 +27,7 @@ public class LoginController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Get en Login");
-		String path = "/jsp/index.html";
+		String path = "/jsp/index.jsp";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
