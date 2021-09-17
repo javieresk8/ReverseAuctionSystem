@@ -8,21 +8,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table (name="Proyecto")
+//@Entity
+//@Table (name="Proyecto")
 public class Proyecto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="idProyecto")
+	//@Id
+	//@GeneratedValue(strategy= GenerationType.IDENTITY)
+	//@Column(name="idProyecto")
 	private Integer id;
 	
-	@Column(name = "nombre")
+	//@Column(name = "nombre")
 	private String nombre;
 	
-	@Column(name="estado")
+	//@Column(name="estado")
 	private Boolean estado;	//null es no iniciado, true es que está abierto y false es que está cerrado
 	
 	public Proyecto() {

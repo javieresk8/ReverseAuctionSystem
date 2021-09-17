@@ -24,8 +24,8 @@ public class Requerimiento implements Serializable{
 	@Column(name="idRequerimiento")
 	private Integer id;
 	
-	@Column(name="precio")
-	private int precio;//en centavos
+	//@Column(name="precio")
+	//private int precio;//en centavos
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -33,9 +33,9 @@ public class Requerimiento implements Serializable{
 	@Column(name="descripcion")
 	private String descripcion;
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name="proyecto")
-	private Proyecto proyecto;
+	//@ManyToOne(cascade = CascadeType.MERGE)
+	//@JoinColumn(name="proyecto")
+	//private Proyecto proyecto;
 	
 	public Requerimiento() {
 		super();
@@ -52,9 +52,9 @@ public class Requerimiento implements Serializable{
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.proyecto = proyecto;
+		//this.proyecto = proyecto;
 	}
-
+	/*
 	public int getPrecio() {
 		return precio;
 	}
@@ -62,7 +62,7 @@ public class Requerimiento implements Serializable{
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-
+	*/
 	public String getNombre() {
 		return nombre;
 	}
@@ -79,7 +79,7 @@ public class Requerimiento implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-
+	/*
 	public Proyecto getProyecto() {
 		return proyecto;
 	}
@@ -88,11 +88,11 @@ public class Requerimiento implements Serializable{
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
 	}
-	
+	*/
 	@Override
 	public String toString() {
-		return "Requerimiento [id=" + id + ", precio=" + precio + ", nombre=" + nombre + ", descripcion=" + descripcion
-				+ ", proyecto=" + proyecto + "]";
+		//return "Requerimiento [id=" + id + ", precio=" + precio + ", nombre=" + nombre + ", descripcion=" + descripcion + ", proyecto=" + proyecto + "]";
+		return "Requerimiento [id=" + id +", nombre=" + nombre + ", descripcion=" + descripcion + "]";
 	}
 
 	

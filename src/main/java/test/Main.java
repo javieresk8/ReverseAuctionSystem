@@ -77,99 +77,44 @@ public class Main {
 		
 		//JPA
 		
-		//Crear yactualizar proyecto y requerimientos
+		//Nuevo diseño
+		
+		//Autorizar
+		//System.out.println(new OfertanteDAO().autorizar("1201384060", "1234"));
+		
+		//Crear Entidad Contratante
 		/*
-		Proyecto pro = new Proyecto();
-		pro.setNombre("PRJ2");
+		EntidadContratante e = new EntidadContratante();
+		e.setNombre("Jaime");
+		e.setApellido("Sabines");
+		e.setCedula("1724421928");
+		e.setClave("1234");
 		
-		Requerimiento r1 = new Requerimiento("R2", "ListarPersonas");
-		r1.setPrecio(90);
-		r1.setProyecto(pro);
-		
-		Proyecto pro1 = new ProyectoDAO().getById(1);
-		
-		Requerimiento r2 = new Requerimiento("R3", "InsertarPersonas");
-		r2.setPrecio(85);
-		r2.setProyecto(pro1);
-		
-		RequerimientoDAO dao0 = new RequerimientoDAO();
-		dao0.create(r1);
-		dao0.create(r2);
+		EntidadContratanteDAO daoE = new EntidadContratanteDAO();
+		daoE.create(e);
 		*/
 		
-		//Crear y actualizar oferta
+		//Crear Ofertante
 		/*
-		Oferta o = new Oferta();
-		o.setValor(50);
-		o.setRequerimiento(r1);
-		
-		OfertaDAO dao1 = new OfertaDAO();
-		dao1.create(o);
-		Oferta oferta = dao1.getById(1);
-		*/
-		
-		//Crear ofertante
-		/*
-		Ofertante p = new Ofertante();
-		p.setNombre("Jorge");
-		p.setApellido("Guitierrez");
-		p.setCedula("1201384060");
-		p.setOferta(oferta);
-		OfertanteDAO dao2 = new OfertanteDAO();
-		dao2.create(p);
-		 */
-		
-		//MERGE REQUERIMIENTO
-		/*
-		ProyectoDAO dao3 = new ProyectoDAO();
-		Proyecto pr = dao3.getById(2);
-	
-		RequerimientoDAO dao4 = new RequerimientoDAO();
-		Requerimiento r1 = new Requerimiento("R9", "Test2");
-		r1.setPrecio(90);
-		r1.setProyecto(pr);
-		dao4.create(r1);
-		*/
-		
-		//Requerimientos por Proyecto
-		RequerimientoDAO dao = new RequerimientoDAO();
-		for(Requerimiento r: dao.obtenerRequerimientosPorProyecto(2)) {
-			System.out.println(r.toString());
-		}
-		
-		//MERGE OFERTA
-		/*
-		Requerimiento b = new RequerimientoDAO().getById(1);
-		
-		OfertaDAO dao2 = new OfertaDAO();
-		Oferta a = new Oferta();
-		a.setValor(444);
-		a.setRequerimiento(b);
-		dao2.create(a);
-		*/
-		/*
-		//Ofertas por Requerimiento
-		OfertaDAO dao1 = new OfertaDAO();
-		for(Oferta o: dao1.getOfertasByRequerimiento(1)) {
-			System.out.println(o.toString());
-		}
-		*/
-		/*
-		Oferta o = new Oferta();
-		o.setValor(50);
-		o.setRequerimiento(new RequerimientoDAO().getById(7));
-		
-		OfertaDAO dao1 = new OfertaDAO();
-		dao1.create(o);
-		Oferta oferta = dao1.getById(1);
-		
 		Ofertante of = new Ofertante();
-		of.setOferta(o);
+		of.setNombre("Marcos");
+		of.setApellido("Aguirre");
+		of.setCedula("1201384060");
+		of.setClave("0101");
 		
-		OfertanteDAO dao2 = new OfertanteDAO();
-		dao2.create(of);
+		OfertanteDAO daoO = new OfertanteDAO();
+		daoO.create(of);
 		*/
 		
-		System.out.println(new OfertanteDAO().autorizar("1201384060", "1234"));
+		//Crear Requerimiento
+		/*
+		Requerimiento r = new Requerimiento();
+		r.setNombre("R2");
+		r.setDescripcion("Test2");
+		
+		RequerimientoDAO daoR = new RequerimientoDAO();
+		daoR.create(r);
+		*/
+		
 	}
 }

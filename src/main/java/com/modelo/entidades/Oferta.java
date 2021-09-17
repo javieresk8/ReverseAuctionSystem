@@ -13,23 +13,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table (name="Oferta")
+//@Entity
+//@Table (name="Oferta")
 public class Oferta implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="idOferta")
+	//@Id
+	//@GeneratedValue(strategy= GenerationType.IDENTITY)
+	//@Column(name="idOferta")
 	private Integer id;
 	
-	@Column(name="valor")
+	//@Column(name="valor")
 	private int valor;//en centavos según el internet
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name="requerimiento")
-	private Requerimiento requerimiento;
+	//@ManyToOne(cascade = CascadeType.MERGE)
+	//@JoinColumn(name="requerimiento")
+	//private Requerimiento requerimiento;
 
 	public Oferta() {
 		super();
@@ -38,7 +38,7 @@ public class Oferta implements Serializable{
 	public Oferta(int valor, Requerimiento requerimiento) {
 		super();
 		this.valor = valor;
-		this.requerimiento = requerimiento;
+		//this.requerimiento = requerimiento;
 	}
 
 	public int getValor() {
@@ -48,7 +48,7 @@ public class Oferta implements Serializable{
 	public void setValor(int valor) {
 		this.valor = valor;
 	}
-
+	/*
 	public Requerimiento getRequerimiento() {
 		return requerimiento;
 	}
@@ -56,10 +56,11 @@ public class Oferta implements Serializable{
 	public void setRequerimiento(Requerimiento requerimiento) {
 		this.requerimiento = requerimiento;
 	}
-
+	*/
 	@Override
 	public String toString() {
-		return "Oferta [id=" + id + ", valor=" + valor + ", requerimiento=" + requerimiento + "]";
+		//return "Oferta [id=" + id + ", valor=" + valor + ", requerimiento=" + requerimiento + "]";
+		return "Oferta [id=" + id + ", valor=" + valor + "]";
 	}
 	
 	

@@ -40,12 +40,13 @@ public class Persona {
 		super();
 	}
 	
-	public Persona(String nombre, String apellido, String cedula, String tipoDeUsuario) {
+	public Persona(String nombre, String apellido, String password, String cedula, String tipoDeUsuario) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.cedula = cedula;
 		this.tipoDeUsuario = tipoDeUsuario;
+		this.clave = password;
 	}
 
 	public String getNombre() {
@@ -66,6 +67,8 @@ public class Persona {
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
+	
+	
 	
 	public String getClave() {
 		return clave;

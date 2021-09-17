@@ -12,16 +12,16 @@ import javax.persistence.OneToOne;
 public class EntidadContratante extends Persona implements Serializable{		
 
 	private static final long serialVersionUID = 1L;
-	
+	/*
 	@OneToOne
 	@JoinColumn(name="proyecto")
 	private Proyecto proyecto;
-	
+	*/
 	public EntidadContratante() {
 		super();
 		this.setTipoDeUsuario("EntidadContratante");
 	}
-
+	/*
 	public Proyecto getProyecto() {
 		return proyecto;
 	}
@@ -29,10 +29,11 @@ public class EntidadContratante extends Persona implements Serializable{
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
 	}
-
+	*/
 	@Override
 	public String toString() {
-		return "EntidadContratante [" + super.toString() + "proyecto=" + proyecto.getNombre() + "]";
+		//return "EntidadContratante [" + super.toString() + "proyecto=" + proyecto.getNombre() + "]";
+		return "EntidadContratante [" + super.toString() + "]";
 	}
 	
 	

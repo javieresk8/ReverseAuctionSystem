@@ -16,17 +16,23 @@ public class Ofertante extends Persona implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	@OneToOne
-	@JoinColumn(name="oferta")
-	private Oferta oferta;
-
+	//@OneToOne
+	//@JoinColumn(name="oferta")
+	//private Oferta oferta;
+	
+	@Column(name="sumaOfertas")
+	private String sumaOfertas;
+	
+	@Column(name="cantidadOfertas")
+	private String cantidadOfertas;
+	
 	public Ofertante() {
 		super();
 		this.setTipoDeUsuario("Ofertante");
 	}
 	
 	
-
+	/*
 	public Oferta getOferta() {
 		return oferta;
 	}
@@ -34,12 +40,13 @@ public class Ofertante extends Persona implements Serializable{
 	public void setOferta(Oferta oferta) {
 		this.oferta = oferta;
 	}
-
+	*/
 
 
 	@Override
 	public String toString() {
-		return "Ofertante [" + super.toString() + ", oferta=" + oferta + "]";
+		//return "Ofertante [" + super.toString() + ", oferta=" + oferta + "]";
+		return "Ofertante [" + super.toString() + "]";
 	}
 	
 	
