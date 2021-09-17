@@ -23,11 +23,9 @@ public class MostrarRequerimientosController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
-		
-		
 		RequerimientoDAO requerimientoDao = new RequerimientoDAO();
 		
-		List<Requerimiento> requerimientos= requerimientoDao.obtenerRequerimientosPorProyecto();
+		List<Requerimiento> requerimientos= requerimientoDao.get();
 		
 		request.setAttribute("requerimientos", requerimientos);
 		// reenvío a la vista de la entidad contratante

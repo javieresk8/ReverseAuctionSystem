@@ -11,6 +11,7 @@ public class OfertanteDAO extends PersonaDAO<Ofertante,Integer>{
 	}
 	
 	//comparar todas las ofertas y retornar el ofertante ganador
+	//algoritmo homomórfico 
 	public Ofertante getGanador() {
 		return null;
 	}

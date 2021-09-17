@@ -28,7 +28,7 @@ public class ListarRequerimientosController extends HttpServlet {
 		RequerimientoDAO requerimientoDao = new RequerimientoDAO();
 		
 		//método sin id de proyecto brah
-		List<Requerimiento> requerimientos= requerimientoDao.obtenerRequerimientosPorProyecto();
+		List<Requerimiento> requerimientos= requerimientoDao.get();
 		
 		request.setAttribute("requerimientos", requerimientos);
 		// reenvío a la vista de la entidad contratante

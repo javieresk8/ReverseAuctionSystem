@@ -13,6 +13,7 @@ import com.modelo.entidades.Oferta;
 import com.modelo.entidades.Ofertante;
 import com.modelo.entidades.Requerimiento;
 import com.modelo.jpa.OfertaDAO;
+import com.modelo.jpa.OfertanteDAO;
 import com.modelo.jpa.RequerimientoDAO;
 
 @WebServlet("/IngresoOfertaController")
@@ -41,22 +42,16 @@ public class IngresoOfertaController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Integer ofertaValor = Integer.parseInt(request.getParameter("ofertaValor"));
-		Integer requerimientoId = Integer.parseInt(request.getParameter("requerimientoId"));
 		
 		// session
 		HttpSession sesion = request.getSession();
 		// seteo objeto entidad
 		Ofertante ofertante = (Ofertante) sesion.getAttribute("usuarioLogueado");
+		ofertante.añadirOferta(ofertaValor);
 		
-		RequerimientoDAO requerimientoDao= new RequerimientoDAO();
-		Requerimiento requerimiento=requerimientoDao.getById(requerimientoId);
+		OfertanteDAO ofertanteDao = new OfertanteDAO();
+		ofertanteDao.update(ofertante);
 		
-		Oferta oferta=new Oferta();
-		oferta.setValor(ofertaValor);
-		//ingreso oferta
-		OfertaDAO ofertaDao = new OfertaDAO();
-		ofertaDao.create(oferta);
-		//preguntar a erick cómo meter oferta
 		String path = "/MostrarRequerimientosController";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
