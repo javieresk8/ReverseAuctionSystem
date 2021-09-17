@@ -1,26 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="no-js" lang="">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Inicio</title>
+    <title>Requerimientos</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/main.css">
-    <title>Inicio</title>
+
 </head>
 
 <body class="index">
-
     <header class="site-header">
         <div class="hero">
             <div class="contenido-header">
@@ -39,32 +40,30 @@
 
                     <h1 class="nombre-sitio">PubliSubasta</h1>
                     <p class="slogan">Subastas Públicas <span>Limpias y Justas</span></p>
-                    <a href="#loggin-inicio" class="button btn-loggin">LogIn</a>
+                    
                 </div>
-                <!--.informacion-->
+                <!--.informacion-evento-->
 
             </div>
         </div>
         <!--.hero-->
     </header>
     <section  id="loggin-inicio" class="seccion contenedor">
-        <h2>Ingresa en tu cuenta para encontrar los requerimientos disponibles</h2>
-        <form id="registro" class="registro" action="../LoginController" method="post">
-            <div id="datos_usuario" class="registro caja clearfix">
-                <div class="campo">
-                    
-                    <input type="cedula" id="cedula" name="cedula" placeholder="Ingrese su Cédula">
-                </div>
-                <div class="campo">
-                    
-                    <input type="password" id="password" name="password" placeholder="Ingrese su Contraseña">
-                </div>
-                <input id="btnIngresar" type="submit" name="submit" class="button" value="Ingresar">
-                <div id="error"></div>
-            </div>
-            <!--#datos_usuario-->
-
-        </form>
+        <h2>Requerimientos Disponibles Para Ofertar</h2>
+            
+        <div class="contenedor">
+            <ul class="lista-precios clearfix">
+            	<c:forEach var="requerimiento" items="${requerimientos}">
+            		<li>
+                    <div class="tabla-precio">
+                        <h3>${requerimiento.nombre}</h3>
+                        <p>${requerimiento.descripcion}</p>
+                        <a href="IngresoOfertaController?idRequerimiento=${requerimiento.id}" class="button">Ofertar</a>
+                    </div>
+                	</li>
+            	</c:forEach> 
+            </ul>
+        </div>
     </section>
     <!--seccion-->
 
@@ -96,6 +95,7 @@
             Todos los derechos Reservados PUBLISUBASTA 2021.
         </p>
     </footer>
+
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
     <script src="${pageContext.request.contextPath}/jsp/js/main.js"></script>
