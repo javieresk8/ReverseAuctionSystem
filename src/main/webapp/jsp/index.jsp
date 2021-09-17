@@ -49,7 +49,7 @@
     </header>
     <section  id="loggin-inicio" class="seccion contenedor">
         <h2>Ingresa en tu cuenta para encontrar los requerimientos disponibles</h2>
-        <form id="registro" class="registro" action="../LoginController" method="POST">
+        <form id="registro" class="registro" action="LoginController" method="POST">
             <div id="datos_usuario" class="registro caja clearfix">
                 <div class="campo">
                     
