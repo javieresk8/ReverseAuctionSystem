@@ -1,8 +1,11 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html class="no-js" lang="">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Ofertar</title>
     <meta name="description" content="">
@@ -14,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/css/main.css">
 
 </head>
 
@@ -49,15 +52,14 @@
         <h2>Haz tu oferta para el requerimiento, recuerda que solo puedes hacerlo una vez </h2>
             
         
-            <form id="registro" class="registro" action="/requerimientos.html" method="post">
+            <form id="registro" class="registro" action="IngresoOfertaController" method="POST">
                 <div id="datos_usuario" class="registro caja clearfix">
-                    <h3>Requerimiento 1</h3>
+                    <h3>${requerimiento.nombre}</h3>
                     <div class="campo">
-                        
-                        <input type="number" id="number" name="number" placeholder="Tu Oferta en USD">
+                        <input type="number" id="ofertaValor" name="ofertaValor" placeholder="Tu Oferta en USD">
                     </div>
                     <div >
-                        <input type="hidden" id="requerimientoId" name="requerimientoId" value="1">
+                        <input type="hidden" id="requerimientoId" name="requerimientoId" value="${requerimiento.id }">
                     </div>
                     <input id="btnIngresar" type="submit" name="submit" class="button" value="Enviar Oferta">
                     <div id="error"></div>
@@ -100,6 +102,6 @@
 
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/jsp/js/main.js"></script>
     </body>
 </html>

@@ -49,11 +49,11 @@
     </header>
     <section  id="loggin-inicio" class="seccion contenedor">
         <h2>Ingresa en tu cuenta para encontrar los requerimientos disponibles</h2>
-        <form id="registro" class="registro" action="../LoginController" method="post">
+        <form id="registro" class="registro" action="../LoginController" method="POST">
             <div id="datos_usuario" class="registro caja clearfix">
                 <div class="campo">
                     
-                    <input type="cedula" id="cedula" name="cedula" placeholder="Ingrese su Cédula">
+                    <input type="text" id="email" name="email" placeholder="Ingrese su Cédula">
                 </div>
                 <div class="campo">
                     

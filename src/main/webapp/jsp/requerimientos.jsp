@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="no-js" lang="">
 
@@ -58,7 +59,7 @@
                     <div class="tabla-precio">
                         <h3>${requerimiento.nombre}</h3>
                         <p>${requerimiento.descripcion}</p>
-                        <a href="IngresoOfertaController?idRequerimiento=${requerimiento.id}" class="button">Ofertar</a>
+                        <a href="IngresoOfertaController?requerimientoId=${requerimiento.id}" class="button">Ofertar</a>
                     </div>
                 	</li>
             	</c:forEach> 
