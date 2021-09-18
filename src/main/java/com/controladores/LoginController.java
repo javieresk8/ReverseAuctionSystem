@@ -47,7 +47,7 @@ public class LoginController extends HttpServlet {
 		Persona personaAutorizada=null;
 		try {
 			personaAutorizada = (Persona) personaAAurotizar.autorizar(cedula, passwordHash);
-		} catch (NoSuchAlgorithmException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

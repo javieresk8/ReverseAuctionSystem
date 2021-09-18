@@ -14,14 +14,14 @@ public class Prueba {
 	OfertanteDAO ofertanteDAO=new OfertanteDAO();
 	//ofertanteDAO.añadirOferta(1, 5600);
     
-	Ofertante ofertante=ofertanteDAO.getGanador();
+	//Ofertante ofertante=ofertanteDAO.getGanador();
 	
 	
-	/*PersonaDAO personaAAurotizar = new PersonaDAO();
+	PersonaDAO personaAAurotizar = new PersonaDAO();
     Persona persona=personaAAurotizar.autorizar("1239849394","juan1234");
-	System.out.println(persona.toString());*/
-	System.out.println(ofertante.toString());
-	System.out.println(ofertante.getSumaOfertas());
+	System.out.println(persona.toString());
+	//System.out.println(ofertante.toString());
+	//System.out.println(ofertante.getSumaOfertas());
 	
 	
 	
