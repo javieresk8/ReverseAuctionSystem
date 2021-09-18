@@ -49,6 +49,20 @@ public class PersonaDAO<T, ID> extends GenericDAO<T, ID>{
 		
 		return persona;
 	}
+	
+	public void insertarDB(String tipoUsuario, String apellido, String cedula, String password, String nombre, BigInteger canOfer, BigInteger sumOfer) {
+		em.getTransaction().begin();
+		Query query = em.createNativeQuery("Insert into persona (tipoUsuario, apellido, cedula, password, nombre, cantidadOfertas, sumaOfertas) values (?,?,?,?,?,?,?)");
+		query.setParameter(1, tipoUsuario);
+		query.setParameter(2, apellido);
+		query.setParameter(3, cedula);
+		query.setParameter(4, password);
+		query.setParameter(5, nombre);
+		query.setParameter(6, canOfer);
+		query.setParameter(7, sumOfer);
+		query.executeUpdate();
+		em.getTransaction().commit();
+	}
 
 
 	

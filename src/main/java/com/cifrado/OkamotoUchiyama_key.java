@@ -5,8 +5,8 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Random;
 
-public class OkamotoUchiyama_key implements Serializable {
-	private static final long serialVersionUID = 7296569067937928113L;
+public class OkamotoUchiyama_key /*implements Serializable*/ {
+	//private static final long serialVersionUID = 7296569067937928113L;
 
 	protected Random rnd;
 	protected BigInteger n;
