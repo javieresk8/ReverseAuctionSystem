@@ -1,6 +1,8 @@
 package com.controladores;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -35,14 +37,20 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Post en Login");
 		String cedula = request.getParameter("email");
-		String passwordHash = this.hashearClave(request.getParameter("password"));//clave hasheada
+		String passwordHash = request.getParameter("password");
 		
 		//session
 		HttpSession sesion = request.getSession();
 		
 		PersonaDAO personaAAurotizar = new PersonaDAO();
 		EntidadContratante s= new EntidadContratante();
-		Persona personaAutorizada = (Persona) personaAAurotizar.autorizar(cedula, passwordHash);
+		Persona personaAutorizada=null;
+		try {
+			personaAutorizada = (Persona) personaAAurotizar.autorizar(cedula, passwordHash);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 													//cedula y password hasheada
 		
 		//verificar
@@ -71,13 +79,13 @@ public class LoginController extends HttpServlet {
 		
 		doGet(request, response);
 	}
-
+    /*
 	//hash
 	private String hashearClave(String clave) {
 		
 		return null;
 	}
-
+*/
 
 	
 

@@ -1,6 +1,7 @@
 package com.modelo.entidades;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.cifrado.Encriptar;
+
+
 
 @Entity
 @DiscriminatorValue("Ofertante")
@@ -41,12 +46,23 @@ public class Ofertante extends Persona implements Serializable{
 		this.oferta = oferta;
 	}
 	*/
-
+	
+	
 
 	@Override
 	public String toString() {
 		//return "Ofertante [" + super.toString() + ", oferta=" + oferta + "]";
 		return "Ofertante [" + super.toString() + "]";
+	}
+
+
+	public String getSumaOfertas() {
+		return sumaOfertas;
+	}
+
+
+	public void setSumaOfertas(String sumaOfertas) {
+		this.sumaOfertas = sumaOfertas;
 	}
 	
 	

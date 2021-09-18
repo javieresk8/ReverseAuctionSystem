@@ -47,10 +47,8 @@ public class IngresoOfertaController extends HttpServlet {
 		HttpSession sesion = request.getSession();
 		// seteo objeto entidad
 		Ofertante ofertante = (Ofertante) sesion.getAttribute("usuarioLogueado");
-		ofertante.añadirOferta(ofertaValor);
-		
-		OfertanteDAO ofertanteDao = new OfertanteDAO();
-		ofertanteDao.update(ofertante);
+		OfertanteDAO ofertantedao=new OfertanteDAO();
+		ofertantedao.añadirOferta(ofertante.getId(), ofertaValor);
 		
 		String path = "/MostrarRequerimientosController";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
