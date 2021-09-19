@@ -1,7 +1,9 @@
 package test;
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
+import com.cifrado.AES;
 import com.cifrado.AlgoritmoHash;
 import com.cifrado.Encriptar;
 import com.cifrado.OUKeyGen;
@@ -116,12 +118,26 @@ public class Main {
 		daoR.create(r);
 		*/
 		
-		RequerimientoDAO dao = new RequerimientoDAO();
-		if(dao.get().size()!=0) {
-			for(Requerimiento r: dao.get()) {
-				System.out.println(r.toString());
+		Encriptar enc = new Encriptar();
+		/*PersonaDAO dao = new PersonaDAO();
+		List<Persona> personas = dao.get();
+		Ofertante of = null;
+		BigInteger num = null;
+		for(Persona o: personas) {
+			if(o.getTipoDeUsuario().equals("Ofertante")) {
+				of = (Ofertante) o;
+				num = new BigInteger(of.getCantidadOfertas());
+				System.out.println(enc.desencriptar(num));
 			}
-		}
-		
+		}*/
+		BigInteger num = new BigInteger("122892409304815147");
+		//BigInteger num2 = new BigInteger("405646942185328640");
+		System.out.println(enc.desencriptar(num));
+		//System.out.println(enc.desencriptar(num2));
+		OfertanteDAO dao = new OfertanteDAO();
+		//dao.añadirOferta(17, 50);
+		System.out.println(dao.getGanador().toString());
+		AES aes=new AES();
+		System.out.println(aes.desencriptar(dao.getById(19).getCedula()));
 	}
 }

@@ -3,6 +3,48 @@ package com.cifrado;
 import java.math.BigInteger;
 
 public class Encriptar {
+
+     public static int a=20;
+     public static long b=14656546;
+     public static BigInteger salida;
+     public static OUKeyGen OUkg=new OUKeyGen();
+     public static OkamotoUchiyama_p esystem= new OkamotoUchiyama_p();
+     public static OkamotoUchiyama_privateKey key=OUkg.OkamotoUchiyamaKey(a,b);
+
+
+
+
+
+public static BigInteger encriptar(BigInteger valorAEncriptar) {
+    BigInteger salida=null;
+    esystem.setDecryptEncrypt(key);
+    salida=esystem.encrypt_ou(valorAEncriptar);
+    return salida;
+}
+
+
+public static BigInteger desencriptar(BigInteger valorEncriptado) {
+    BigInteger salida=null;
+    esystem.setDecryptEncrypt(key);
+    salida=esystem.decrypt_ou(valorEncriptado);
+    return salida;
+}
+
+public static BigInteger sumaHomorfica(BigInteger valorEncriptado1, BigInteger valorEncriptado2) {
+    BigInteger salida=null;
+    salida=esystem.addOU(valorEncriptado2, valorEncriptado1);
+    return salida;
+}
+
+
+}
+
+/*
+package com.cifrado;
+
+import java.math.BigInteger;
+
+public class Encriptar {
 	
 	 public int a;
 	 public long b;
@@ -44,27 +86,8 @@ public BigInteger sumaHomorfica(BigInteger valorEncriptado1, BigInteger valorEnc
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+*/
 
 
 /*
@@ -101,4 +124,4 @@ public BigInteger desencriptar(BigInteger ValorEncriptado) {
 
 
 
-}
+

@@ -56,6 +56,16 @@ public class Ofertante extends Persona implements Serializable{
 	}
 
 
+	public String getCantidadOfertas() {
+		return cantidadOfertas;
+	}
+
+
+	public void setCantidadOfertas(String cantidadOfertas) {
+		this.cantidadOfertas = cantidadOfertas;
+	}
+
+
 	public String getSumaOfertas() {
 		return sumaOfertas;
 	}
