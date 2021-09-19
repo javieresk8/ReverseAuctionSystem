@@ -32,14 +32,12 @@ public class LogoutController extends HttpServlet {
 		switch (personaAutorizada.getTipoDeUsuario()) {
 			case "EntidadContratante": {
 				request.getSession().invalidate();
-				String path = "/LoginController";
-				getServletContext().getRequestDispatcher(path).forward(request, response);
+				request.getRequestDispatcher("/jsp/admin-login.jsp").forward(request, response);
 				break;
 			}
 			case "Ofertante": {
 				request.getSession().invalidate();
-				String path = "/LoginController";
-				getServletContext().getRequestDispatcher(path).forward(request, response);
+				request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
 				break;
 			}
 			default:
