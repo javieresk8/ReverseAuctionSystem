@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import com.cifrado.Encriptar;
 import com.modelo.entidades.Oferta;
 import com.modelo.entidades.Ofertante;
+import com.modelo.entidades.Persona;
 import com.modelo.entidades.Proyecto;
 import com.cifrado.*;
 
@@ -20,12 +21,13 @@ public class OfertanteDAO extends PersonaDAO<Ofertante,Integer>{
 	
 	//comparar todas las ofertas y retornar el ofertante ganador
 	//algoritmo homomórfico 
+	@SuppressWarnings({ "unchecked", "static-access" })
 	public Ofertante getGanador() {
         Ofertante ofertante=new Ofertante();
         AES aes=new AES();
         Encriptar enc=new Encriptar();
         int numeroreq, aux1,aux2;
-        BigInteger aux;
+        
         try {
         em.getTransaction().begin();
         Query quer = em.createNativeQuery("Select count(idRequerimiento) from requerimiento");
@@ -73,6 +75,7 @@ public class OfertanteDAO extends PersonaDAO<Ofertante,Integer>{
     }
 	
 	
+	@SuppressWarnings("static-access")
 	public void añadirOferta(int idOfertante, int oferta) {
 		BigInteger oferta1=BigInteger.valueOf(oferta);
 		    Encriptar enc=new Encriptar();
@@ -100,16 +103,16 @@ public class OfertanteDAO extends PersonaDAO<Ofertante,Integer>{
 	
 			numeroofertas=(enc.desencriptar(cantidadOfertas)).intValue();
 			if(numeroofertas<numeroreq) {
-		    sumaOfertas=enc.sumaHomorfica(sumaOfertas, enc.encriptar(oferta1));
-		    cantidadOfertas=enc.sumaHomorfica(cantidadOfertas, enc.encriptar(uno));
-		    
-		    em.getTransaction().begin();
-	  		Query query1 = em.createNativeQuery("UPDATE persona set cantidadOfertas=?, sumaOfertas=? where idPersona=?");
-			query1.setParameter(1, cantidadOfertas);
-			query1.setParameter(2, sumaOfertas);
-			query1.setParameter(3, id); 
-			query1.executeUpdate();
-			em.getTransaction().commit();
+			    sumaOfertas=enc.sumaHomorfica(sumaOfertas, enc.encriptar(oferta1));
+			    cantidadOfertas=enc.sumaHomorfica(cantidadOfertas, enc.encriptar(uno));
+			    
+			    em.getTransaction().begin();
+		  		Query query1 = em.createNativeQuery("UPDATE persona set cantidadOfertas=?, sumaOfertas=? where idPersona=?");
+				query1.setParameter(1, cantidadOfertas);
+				query1.setParameter(2, sumaOfertas);
+				query1.setParameter(3, id); 
+				query1.executeUpdate();
+				em.getTransaction().commit();
 			}
 			
 		}

@@ -14,75 +14,12 @@ import com.modelo.jpa.*;
 
 
 public class Main {
-	
-	
-	public static void testOneSizeOkaUchi(){
-		int a=20;
-		long b=14656546;
-		
-		 OUKeyGen OUkg = new OUKeyGen();
-		 OkamotoUchiyama_p esystem= new OkamotoUchiyama_p();
-		 OkamotoUchiyama_privateKey key=OUKeyGen.OkamotoUchiyamaKey(a,b);
-		 esystem.setDecryptEncrypt(key);
-		 
-		 BigInteger m=new BigInteger("456");
-		 BigInteger c=null;
-
-		 c=esystem.encrypt_ou(m);
-		
-		 BigInteger decryption=null;
-		 decryption=esystem.decrypt_ou(c);
-		 System.out.println("\tValor del texto inicial: "+m);
-		 System.out.println("\tValor del texto cifrado: "+c);
-		 System.out.println("\tValor del texto descifrado: "+decryption);
-	}
-	
-	public static void homomorphicEncryption() {
-		BigInteger valor1=new BigInteger("7");
-		BigInteger valor2=new BigInteger("28");
-		BigInteger sumah=null;
-		Encriptar enc1=new Encriptar();
-		BigInteger encr1=enc1.encriptar(valor1);
-		BigInteger encr2=enc1.encriptar(valor2);
-		sumah=enc1.sumaHomorfica(encr1, encr2);
-		BigInteger des1=enc1.desencriptar(encr1);
-		BigInteger des2=enc1.desencriptar(encr2);
-		System.out.println("Valor 1:"+valor1);
-		System.out.println("Valor 2:"+valor2);
-		System.out.println("Valor 1 encriptado: "+encr1);
-		System.out.println("Valor 2 encriptado: "+encr2);
-		System.out.println("Valor de la suma homomorfica: "+sumah);
-		System.out.println("Valor de la suma homomorfica: "+enc1.desencriptar(sumah));
-		System.out.println("***************************");
-		System.out.println("Hashing");
-	}
-	
-	public static void hashTest() {
-		AlgoritmoHash hash=new AlgoritmoHash();
-		try {
-			System.out.println(hash.obtenerHash("Prueba de hash"));
-			System.out.println(hash.obtenerHash("Prueba de hash1"));
-			System.out.println(hash.obtenerHash("prueba de hash"));
-			System.out.println(hash.obtenerHash("Prueba de hash"));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-	}
 
 	//MAIN
 	
 	public static void main(String[] args) {
-		//Encriptacion
-		//homomorphicEncryption();
-		//hashTest();
-		//testOneSizeOkaUchi();
 		
 		//JPA
-		
-		//Nuevo diseño
-		
-		//Autorizar
-		//System.out.println(new OfertanteDAO().autorizar("1201384060", "1234"));
 		
 		//Crear Entidad Contratante
 		/*
@@ -117,27 +54,31 @@ public class Main {
 		RequerimientoDAO daoR = new RequerimientoDAO();
 		daoR.create(r);
 		*/
-		
 		Encriptar enc = new Encriptar();
-		/*PersonaDAO dao = new PersonaDAO();
+		@SuppressWarnings("rawtypes")
+		PersonaDAO dao = new PersonaDAO();
+		@SuppressWarnings("unchecked")
 		List<Persona> personas = dao.get();
 		Ofertante of = null;
 		BigInteger num = null;
 		for(Persona o: personas) {
-			if(o.getTipoDeUsuario().equals("Ofertante")) {
+			if(o.getId().equals(19)) {
 				of = (Ofertante) o;
 				num = new BigInteger(of.getCantidadOfertas());
 				System.out.println(enc.desencriptar(num));
 			}
-		}*/
-		BigInteger num = new BigInteger("122892409304815147");
-		//BigInteger num2 = new BigInteger("405646942185328640");
-		System.out.println(enc.desencriptar(num));
-		//System.out.println(enc.desencriptar(num2));
-		OfertanteDAO dao = new OfertanteDAO();
+		}
+		
+		
+		
+		//BigInteger num1 = new BigInteger("405646942185328640");
+		//System.out.println(Encriptar.desencriptar(num1));
+		
+		OfertanteDAO dao1 = new OfertanteDAO();
+		//dao1.getOfertantes(19);
 		//dao.añadirOferta(17, 50);
-		System.out.println(dao.getGanador().toString());
+		System.out.println(dao1.getGanador().toString());
 		AES aes=new AES();
-		System.out.println(aes.desencriptar(dao.getById(19).getCedula()));
+		System.out.println(aes.desencriptar(dao1.getById(18).getCedula()));
 	}
 }

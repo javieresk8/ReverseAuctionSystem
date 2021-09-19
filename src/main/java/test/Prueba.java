@@ -14,8 +14,7 @@ import com.modelo.jpa.PersonaDAO;
 public class Prueba {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException {
-	OfertanteDAO ofertanteDAO=new OfertanteDAO();
-	//ofertanteDAO.añadirOferta(1, 5600);
+	
     
 	//Ofertante ofertante=ofertanteDAO.getGanador();
 	
@@ -27,8 +26,8 @@ public class Prueba {
 	BigInteger uno=new BigInteger("0");
 	
 	AES aes=new AES();
-	Encriptar enc=new Encriptar();
 	AlgoritmoHash hash=new AlgoritmoHash();
+	Encriptar enc = new Encriptar();
 	
 	String tipoUsuario="EntidadContratante";
 	String apellido=aes.encriptar("Apolo");
@@ -38,6 +37,7 @@ public class Prueba {
 	BigInteger cantidadOfertas=enc.encriptar(uno);
 	BigInteger sumaOfertas=enc.encriptar(uno);
 	
+	@SuppressWarnings("rawtypes")
 	PersonaDAO personadao=new PersonaDAO();
 	//personadao.insertarDB(tipoUsuario, apellido, cedula, password, nombre, cantidadOfertas, sumaOfertas);
 	
