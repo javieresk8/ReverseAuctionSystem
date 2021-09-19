@@ -28,7 +28,7 @@
           <div class="row">
             <div class="contenido primario col">
               <h2 class="text-center">Nuevo Requerimiento</h2>
-              <form id="login-admin" action="AniadirRequerimientoController" class="col">
+              <form id="login-admin" action="AniadirRequerimientoController" class="col" method="POST">
                 <div class="form-group">
                   <label for="nombreRequerimiento">Título:</label>
                   <input

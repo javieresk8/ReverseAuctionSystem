@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 public class GenericDAO<T, ID> {
 	protected EntityManager em;
@@ -14,7 +15,10 @@ public class GenericDAO<T, ID> {
 
 	}
 	public List<T> get() {
-		return null;
+		String consulta = "Select e from " + this.persistenceClass.getSimpleName() + " e";
+		Query query = em.createQuery(consulta, this.persistenceClass);
+		List<T> list = (List<T>) query.getResultList();
+		return list;
 	}
 
 	public T getById(ID id) {

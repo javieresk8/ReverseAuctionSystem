@@ -14,7 +14,7 @@ import com.modelo.entidades.Ofertante;
 import com.modelo.entidades.Persona;
 import com.modelo.jpa.PersonaDAO;
 
-@WebServlet("/LoginController")
+@WebServlet("/LogoutController")
 public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,26 +27,25 @@ public class LogoutController extends HttpServlet {
 		// session
 		HttpSession sesion = request.getSession();
 
-		Persona personaAutorizada = (Persona) sesion.getAttribute("usuarioLogueado");
+		Persona personaAutorizada =  (Persona) sesion.getAttribute("usuarioLogueado");
 
-		
 		switch (personaAutorizada.getTipoDeUsuario()) {
-		case "EntidadContratante": {
-			request.getSession().invalidate();
-			String path = "/jsp/index.jsp";
-			getServletContext().getRequestDispatcher(path).forward(request, response);
-			break;
+			case "EntidadContratante": {
+				request.getSession().invalidate();
+				String path = "/LoginController";
+				getServletContext().getRequestDispatcher(path).forward(request, response);
+				break;
+			}
+			case "Ofertante": {
+				request.getSession().invalidate();
+				String path = "/LoginController";
+				getServletContext().getRequestDispatcher(path).forward(request, response);
+				break;
+			}
+			default:
+				break;
 		}
-		case "Ofertante": {
-			request.getSession().invalidate();
-			String path = "/jsp/index.jsp";
-			getServletContext().getRequestDispatcher(path).forward(request, response);
-			break;
-		}
-		default:
-			break;
-		}
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

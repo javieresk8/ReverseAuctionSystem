@@ -33,7 +33,7 @@
             		<div class="card col-4 mt-3">
 	                    <h2 class="card-title font-weight-bold">${requerimiento.nombre}</h2>
 	                    <p>
-	                      <span class="font-weight-bold">Descripción:</span> ${requerimiento.descripcion}
+	                      <span class="font-weight-bold">Descripción:</span> ${requerimiento.descripcion} 
 	                    </p>
                   </div>
             	</c:forEach> 

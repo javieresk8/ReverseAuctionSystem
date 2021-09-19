@@ -26,7 +26,6 @@ public class MostrarRequerimientosController extends HttpServlet {
 		RequerimientoDAO requerimientoDao = new RequerimientoDAO();
 		
 		List<Requerimiento> requerimientos= requerimientoDao.get();
-		
 		request.setAttribute("requerimientos", requerimientos);
 		// reenvío a la vista de la entidad contratante
 		String path = "/jsp/requerimientos.jsp";
@@ -36,7 +35,6 @@ public class MostrarRequerimientosController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		doGet(request, response);
 	}
 

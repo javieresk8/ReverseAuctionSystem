@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.modelo.entidades.EntidadContratante;
 import com.modelo.entidades.Oferta;
 import com.modelo.entidades.Ofertante;
+import com.modelo.entidades.Persona;
 import com.modelo.entidades.Requerimiento;
 import com.modelo.jpa.OfertaDAO;
 import com.modelo.jpa.OfertanteDAO;
@@ -46,7 +47,7 @@ public class IngresoOfertaController extends HttpServlet {
 		// session
 		HttpSession sesion = request.getSession();
 		// seteo objeto entidad
-		Ofertante ofertante = (Ofertante) sesion.getAttribute("usuarioLogueado");
+		Persona ofertante =  (Persona) sesion.getAttribute("usuarioLogueado");
 		OfertanteDAO ofertantedao=new OfertanteDAO();
 		ofertantedao.añadirOferta(ofertante.getId(), ofertaValor);
 		

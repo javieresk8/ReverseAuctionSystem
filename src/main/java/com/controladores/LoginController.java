@@ -43,12 +43,11 @@ public class LoginController extends HttpServlet {
 		HttpSession sesion = request.getSession();
 		
 		PersonaDAO personaAAurotizar = new PersonaDAO();
-		EntidadContratante s= new EntidadContratante();
 		Persona personaAutorizada=null;
 		try {
-			personaAutorizada = (Persona) personaAAurotizar.autorizar(cedula, passwordHash);
+			personaAutorizada = personaAAurotizar.autorizar(cedula, passwordHash);
+			System.out.println(personaAutorizada.getTipoDeUsuario());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 													//cedula y password hasheada
@@ -60,14 +59,12 @@ public class LoginController extends HttpServlet {
 		}else{
 			switch (personaAutorizada.getTipoDeUsuario()) {
 				case "EntidadContratante": {
-					EntidadContratante entidadContratante = (EntidadContratante) personaAutorizada;
-					sesion.setAttribute("usuarioLogueado", entidadContratante);
+					sesion.setAttribute("usuarioLogueado", personaAutorizada);
 					request.getRequestDispatcher("/ListarRequerimientosController").forward(request, response);
 					break;
 				}
 				case "Ofertante": {
-					Ofertante ofertante = (Ofertante) personaAutorizada;
-					sesion.setAttribute("usuarioLogueado", ofertante);
+					sesion.setAttribute("usuarioLogueado", personaAutorizada);
 					request.getRequestDispatcher("/MostrarRequerimientosController").forward(request, response);
 					break;
 				}
@@ -79,13 +76,7 @@ public class LoginController extends HttpServlet {
 		
 		doGet(request, response);
 	}
-    /*
-	//hash
-	private String hashearClave(String clave) {
-		
-		return null;
-	}
-*/
+
 
 	
 

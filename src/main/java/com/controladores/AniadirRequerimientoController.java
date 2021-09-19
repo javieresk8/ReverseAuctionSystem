@@ -33,16 +33,13 @@ public class AniadirRequerimientoController extends HttpServlet {
 		String nombreRequerimiento = request.getParameter("nombreRequerimiento");
 		String descripcionRequerimiento = request.getParameter("descripcionRequerimiento");
 
-		/*/ session
-		HttpSession sesion = request.getSession();
-		// seteo objeto entidad
-		EntidadContratante entidad = (EntidadContratante) sesion.getAttribute("usuarioLogueado");*/
 
 		Requerimiento requerimiento = new Requerimiento(nombreRequerimiento, descripcionRequerimiento);
 
 		// agrego requerimiento
 		RequerimientoDAO reu=new RequerimientoDAO();
 		reu.create(requerimiento);
+		
 		// reenvío a la vista de la entidad contratante
 		String path = "/ListarRequerimientosController";
 		getServletContext().getRequestDispatcher(path).forward(request, response);
