@@ -63,8 +63,19 @@ public class Requerimiento implements Serializable{
 		this.precio = precio;
 	}
 	*/
+	
+	
+	
 	public String getNombre() {
 		return nombre;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public void setNombre(String nombre) {

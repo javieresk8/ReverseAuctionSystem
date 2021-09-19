@@ -116,5 +116,12 @@ public class Main {
 		daoR.create(r);
 		*/
 		
+		RequerimientoDAO dao = new RequerimientoDAO();
+		if(dao.get().size()!=0) {
+			for(Requerimiento r: dao.get()) {
+				System.out.println(r.toString());
+			}
+		}
+		
 	}
 }
