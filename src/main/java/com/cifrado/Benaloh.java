@@ -54,13 +54,13 @@ public class Benaloh {
 
 //      int r=GenerateR();
       BigInteger p, q, p_minus_one,q_minus_one,R;
-      R=BigInteger.valueOf(199);
+      R=BigInteger.valueOf(99999);
       this.R=R;
       int a=23;
 
           do {
               //p = new BigInteger(k, cert,new Random());
-              p = new BigInteger("11187811081896924793");
+              p = new BigInteger("10622804763780071101");
               //System.out.println(p+"**********************************************");
               p_minus_one=p.subtract(BigInteger.ONE);
           }while(p_minus_one.mod(this.R).intValue()!=0
@@ -68,8 +68,8 @@ public class Benaloh {
 
           do {
               //q = new BigInteger(k, cert,new SecureRandom());
-              q=new BigInteger("16695696228956027887");
-              System.out.println(q+"qqqqqqqqqqqqqq");
+              q=new BigInteger("9397635723441579071");
+              //System.out.println(q+"qqqqqqqqqqqqqq");
               q_minus_one=q.subtract(BigInteger.ONE);
           } while (p.compareTo(q) == 0 || q_minus_one.gcd(R).intValue()!=1);
 
@@ -112,12 +112,12 @@ public class Benaloh {
 
   //generating big integer between from z*n
   public static BigInteger itemZStarN(BigInteger n,BigInteger phi,BigInteger R) {
-      BigInteger r=new BigInteger("71733959013678239556285706814709390220");
+      BigInteger r=new BigInteger("99761616700269037293591550316305389819");
       
       return r;
   }
   public static BigInteger randomZStarN(BigInteger n) {
-      BigInteger r=new BigInteger("150826069406517330486070346200385269391");
+      BigInteger r=new BigInteger("57715486228926923256094588826028237095");
       
       return r;
   }

@@ -21,6 +21,7 @@ public class OfertanteDAO extends PersonaDAO<Ofertante,Integer>{
 	
 	//comparar todas las ofertas y retornar el ofertante ganador
 	//algoritmo homomórfico 
+	/*
 	@SuppressWarnings({ "unchecked", "static-access" })
 	public Ofertante getGanador() {
         Ofertante ofertante=new Ofertante();
@@ -73,7 +74,66 @@ public class OfertanteDAO extends PersonaDAO<Ofertante,Integer>{
         }
         return ofertante;
     }
+	*/
 	
+	@SuppressWarnings({ "unchecked", "static-access" })
+	public Ofertante getGanador() {
+        Ofertante ofertante=new Ofertante();
+        AES aes=new AES();
+        Encriptar enc=new Encriptar();
+        int numeroreq, aux1,aux2, ofer =0;
+        
+        try {
+        //em.getTransaction().begin();
+        Query quer = em.createNativeQuery("Select count(idRequerimiento) from requerimiento");
+        //System.out.println(quer.getSingleResult());
+        Object auxiliar=quer.getSingleResult();
+        numeroreq=Integer.parseInt(auxiliar.toString());
+        //em.getTransaction().commit();
+        
+        em.getTransaction().begin();
+        //Query query = em.createNativeQuery("Select p.idPersona, p.tipoUsuario, p.apellido, p.cedula, p.password, p.nombre, p.cantidadOfertas, p.sumaOfertas from persona p where tipoUsuario='Ofertante'");
+        Query query = em.createQuery("Select p from Persona p where p.tipoDeUsuario = :param_tipo");
+        query.setParameter("param_tipo", "Ofertante");
+        
+        
+        List<Ofertante> ofertantes= query.getResultList();
+        List<Ofertante> ofertantes1= new ArrayList<Ofertante>();
+        for (Ofertante a : ofertantes) {
+            BigInteger desenc=new BigInteger(a.getCantidadOfertas());
+            ofer=Integer.parseInt(enc.desencriptar(desenc).toString());
+            if(ofer==numeroreq) {
+                ofertantes1.add(a);
+                
+            }
+        }
+        
+        BigInteger desenc=new BigInteger(ofertantes1.get(0).getSumaOfertas());
+        aux1=(enc.desencriptar(desenc)).intValue();
+        aux2=0;
+        em.getTransaction().commit();
+        
+        for (int i = 1; i<ofertantes1.size(); i++) {
+            BigInteger de=new BigInteger(ofertantes1.get(i).getSumaOfertas());
+	        if(aux1<(enc.desencriptar(de)).intValue()) {
+		        aux1=enc.desencriptar(de).intValue();
+		        aux2=i;
+	        }
+        }
+
+        //ofertante = ofertantes1.get(aux2);
+        ofertante.setId(ofertantes1.get(aux2).getId());
+        ofertante.setNombre(aes.desencriptar((ofertantes1.get(aux2)).getNombre()));
+        ofertante.setCedula(aes.desencriptar((ofertantes1.get(aux2)).getCedula()));
+        ofertante.setApellido(aes.desencriptar((ofertantes1.get(aux2)).getApellido()));
+        ofertante.setCantidadOfertas(String.valueOf(ofer));
+        ofertante.setSumaOfertas(String.valueOf(aux1));
+        }catch (Exception e) {
+        	System.out.println(e);
+            ofertante=null;
+        }
+        return ofertante;
+    }
 	
 	@SuppressWarnings("static-access")
 	public void añadirOferta(int idOfertante, int oferta) {

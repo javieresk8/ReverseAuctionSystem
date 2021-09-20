@@ -6,9 +6,6 @@ import java.util.List;
 import com.cifrado.AES;
 import com.cifrado.AlgoritmoHash;
 import com.cifrado.Encriptar;
-import com.cifrado.OUKeyGen;
-import com.cifrado.OkamotoUchiyama_p;
-import com.cifrado.OkamotoUchiyama_privateKey;
 import com.modelo.entidades.*;
 import com.modelo.jpa.*;
 
@@ -60,25 +57,25 @@ public class Main {
 		@SuppressWarnings("unchecked")
 		List<Persona> personas = dao.get();
 		Ofertante of = null;
-		BigInteger num = null;
+		BigInteger num = null, num1 = null;
 		for(Persona o: personas) {
-			if(o.getId().equals(19)) {
+			if(o.getTipoDeUsuario().equals("Ofertante")) {
 				of = (Ofertante) o;
 				num = new BigInteger(of.getCantidadOfertas());
-				System.out.println(enc.desencriptar(num));
+				num1 = new BigInteger(of.getSumaOfertas());
+				System.out.println(of.getId() + " -> " + enc.desencriptar(num) + " -> " + enc.desencriptar(num1));
 			}
 		}
 		
+		BigInteger num2 = new BigInteger("300");
+		System.out.println(enc.desencriptar(enc.encriptar(num2)));
 		
-		
-		//BigInteger num1 = new BigInteger("405646942185328640");
-		//System.out.println(Encriptar.desencriptar(num1));
 		
 		OfertanteDAO dao1 = new OfertanteDAO();
 		//dao1.getOfertantes(19);
 		//dao.añadirOferta(17, 50);
-		System.out.println(dao1.getGanador().toString());
-		AES aes=new AES();
-		System.out.println(aes.desencriptar(dao1.getById(18).getCedula()));
+		//Ofertante ganador = dao1.getGanador();
+		//System.out.println(ganador.getId() +  " -> " + ganador.getCantidadOfertas() + " -> " + ganador.getSumaOfertas());
+
 	}
 }
