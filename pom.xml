@@ -73,5 +73,30 @@
 			<artifactId>eclipselink</artifactId>
 			<version>2.5.2</version>
 		</dependency>
+		<!-- SonarQube -->
+		<dependency>
+	    	<groupId>org.codehaus.mojo</groupId>
+	    	<artifactId>sonar-maven-plugin</artifactId>
+	    	<version>3.9.0.2155</version>
+	    	<type>pom</type>
+	    </dependency>
   </dependencies>
+
+	<!-- AGREGO LAS SIGUIENTES LÌNEAS -->
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<sonar.host.url>http://localhost:9000</sonar.host.url>
+				<!-- AGREGO LAS SIGUIENTES LÌNEAS <sonar.jdbc.url>jdbc:mysql://194.219.31.173:3306/sonar?useUnicode=true&amp;characterEnconding=utf8=&amp;rewwriteBatchedStatements=true</sonar.jdbc.url> 
+					<sonar.jdbc.driver>com.mysql.jdbc.driver</sonar.jdbc.driver> <sonar.jdbc.username>sonar</sonar.jdbc.username> 
+					<sonar.jdbc.password>sonar</sonar.jdbc.password> -->
+				<sonar.login>admin</sonar.login>
+				<sonar.password>admin</sonar.password>
+			</properties>
+		</profile>
+	</profiles>
 </project>
