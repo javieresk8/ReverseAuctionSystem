@@ -31,7 +31,7 @@
               <div class="row">
                 
                   <div class="text-center col">
-                    <h3 class="text-success">Nombre de la Empresa</h3>
+                    <h3 class="text-success">Razón Social</h3>
                     <p class="font-size-large">${ofertante.nombre} ${ofertante.apellido}</p>
                     <h3 class="text-success">Oferta Final Ganadora</h3>
                     <p class="font-weight-bold">${ofertante.sumaOfertas} $</p>
