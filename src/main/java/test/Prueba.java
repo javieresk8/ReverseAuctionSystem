@@ -40,7 +40,7 @@ public class Prueba {
 	
 	@SuppressWarnings("rawtypes")
 	PersonaDAO personadao=new PersonaDAO();
-	personadao.insertarDB(tipoUsuario, apellido, cedula, password, nombre, cantidadOfertas, sumaOfertas);
+	//personadao.insertarDB(tipoUsuario, apellido, cedula, password, nombre, cantidadOfertas, sumaOfertas);
 	
 	tipoUsuario="Ofertante";
 	apellido=aes.encriptar("Romero");
