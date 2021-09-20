@@ -24,9 +24,6 @@ public class Prueba {
 	System.out.println(persona.toString());
 	*/
 		
-		
-		
-		/*
 	BigInteger uno=new BigInteger("0");
 	
 	AES aes=new AES();
@@ -43,11 +40,7 @@ public class Prueba {
 	
 	@SuppressWarnings("rawtypes")
 	PersonaDAO personadao=new PersonaDAO();
-	//personadao.insertarDB(tipoUsuario, apellido, cedula, password, nombre, cantidadOfertas, sumaOfertas);
-	
-	
-	
-	
+	personadao.insertarDB(tipoUsuario, apellido, cedula, password, nombre, cantidadOfertas, sumaOfertas);
 	
 	tipoUsuario="Ofertante";
 	apellido=aes.encriptar("Romero");
@@ -76,7 +69,7 @@ public class Prueba {
 	cantidadOfertas=enc.encriptar(uno);
 	sumaOfertas=enc.encriptar(uno);
 	personadao.insertarDB(tipoUsuario, apellido, cedula, password, nombre, cantidadOfertas, sumaOfertas);
-	*/
+	
 	
 	
 	}

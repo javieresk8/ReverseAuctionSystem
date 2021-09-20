@@ -59,7 +59,7 @@
             		<c:choose>
 				  <c:when test="${aux+1==status.count}">
 				    <div class="tabla-precio"  >
-                        <h3>${hola}</h3>
+                        <h3>${requerimiento.nombre}</h3>
                         <p>${requerimiento.descripcion}</p>
                         <a   href="IngresoOfertaController?requerimientoId=${requerimiento.id}"   class="button" >Ofertar</a>
                     </div>
