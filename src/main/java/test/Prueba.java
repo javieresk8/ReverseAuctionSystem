@@ -23,6 +23,10 @@ public class Prueba {
     Persona persona=personaAAurotizar.autorizar("1239849394","juan1234");
 	System.out.println(persona.toString());
 	*/
+		
+		
+		
+		/*
 	BigInteger uno=new BigInteger("0");
 	
 	AES aes=new AES();
@@ -72,7 +76,7 @@ public class Prueba {
 	cantidadOfertas=enc.encriptar(uno);
 	sumaOfertas=enc.encriptar(uno);
 	personadao.insertarDB(tipoUsuario, apellido, cedula, password, nombre, cantidadOfertas, sumaOfertas);
-	
+	*/
 	
 	
 	}

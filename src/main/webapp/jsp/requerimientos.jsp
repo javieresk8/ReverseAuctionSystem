@@ -51,16 +51,27 @@
     </header>
     <section  id="loggin-inicio" class="seccion contenedor">
         <h2>Requerimientos Disponibles Para Ofertar</h2>
-            
+        
         <div class="contenedor">
             <ul class="lista-precios clearfix">
-            	<c:forEach var="requerimiento" items="${requerimientos}">
-            		<li>
-                    <div class="tabla-precio">
+            	<c:forEach var="requerimiento" items="${requerimientos}" varStatus="status">
+            		<li > 
+            		<c:choose>
+				  <c:when test="${aux+1==status.count}">
+				    <div class="tabla-precio"  >
+                        <h3>${hola}</h3>
+                        <p>${requerimiento.descripcion}</p>
+                        <a   href="IngresoOfertaController?requerimientoId=${requerimiento.id}"   class="button" >Ofertar</a>
+                    </div>
+				  </c:when>
+				  <c:otherwise>
+				  <div class="tabla-precio"  >
                         <h3>${requerimiento.nombre}</h3>
                         <p>${requerimiento.descripcion}</p>
-                        <a href="IngresoOfertaController?requerimientoId=${requerimiento.id}" class="button">Ofertar</a>
+                        <a class="button" >Ofertar</a>
                     </div>
+  				  </c:otherwise>
+ 			       </c:choose>
                 	</li>
             	</c:forEach> 
             </ul>
@@ -74,7 +85,7 @@
     <footer class="site-footer">
         <div class="contenedor clearfix">
             <div class="footer-informacion">
-                <h3>Sobre <span>publisubasta</span></h3>
+                <h3>Sobre <span>publisubasta </span></h3>
                 <p>Praesent rutrum efficitur pharetra. Vivamus scelerisque pretium velit, id tempor turpis pulvinar et. Ut bibendum finibus massa non molestie. Curabitur urna metus, placerat gravida lacus ut, lacinia congue orci. Maecenas luctus mi at ex
                     blandit vehicula. Morbi porttitor tempus euismod.</p>
             </div>

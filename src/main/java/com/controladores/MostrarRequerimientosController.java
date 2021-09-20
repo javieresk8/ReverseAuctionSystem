@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.modelo.entidades.EntidadContratante;
+import com.modelo.entidades.Persona;
 import com.modelo.entidades.Requerimiento;
+import com.modelo.jpa.OfertanteDAO;
 import com.modelo.jpa.RequerimientoDAO;
 
 @WebServlet("/MostrarRequerimientosController")
@@ -24,7 +26,11 @@ public class MostrarRequerimientosController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
 		RequerimientoDAO requerimientoDao = new RequerimientoDAO();
-		
+		HttpSession sesion = request.getSession();
+		Persona ofertante=(Persona) sesion.getAttribute("usuarioLogueado");
+		OfertanteDAO ofertantedao=new OfertanteDAO();
+		int aux=ofertantedao.obtenernumeroofertas(ofertante.getId());
+		request.setAttribute("aux", aux);
 		List<Requerimiento> requerimientos= requerimientoDao.get();
 		request.setAttribute("requerimientos", requerimientos);
 		// reenvío a la vista de la entidad contratante

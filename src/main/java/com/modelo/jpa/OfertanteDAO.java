@@ -176,6 +176,18 @@ public class OfertanteDAO extends PersonaDAO<Ofertante,Integer>{
 			}
 			
 		}
+	
+	public int obtenernumeroofertas(int idOfertante) {
+    	Encriptar enc=new Encriptar();
+    	em.getTransaction().begin();
+  		Query query = em.createNativeQuery("Select cantidadOfertas from persona where idPersona=?");
+		query.setParameter(1,idOfertante);
+		Object auxiliar= (Object) query.getSingleResult();
+		BigInteger cantidadOfertas=new BigInteger(auxiliar.toString());
+		em.getTransaction().commit();
+    	return (enc.desencriptar(cantidadOfertas)).intValue();
+    }
+	
 		
 	}
 
