@@ -115,7 +115,7 @@ public class OfertanteDAO extends PersonaDAO<Ofertante,Integer>{
         
         for (int i = 1; i<ofertantes1.size(); i++) {
             BigInteger de=new BigInteger(ofertantes1.get(i).getSumaOfertas());
-	        if(aux1<(enc.desencriptar(de)).intValue()) {
+	        if(aux1>(enc.desencriptar(de)).intValue()) {
 		        aux1=enc.desencriptar(de).intValue();
 		        aux2=i;
 	        }

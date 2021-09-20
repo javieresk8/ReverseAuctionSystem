@@ -74,8 +74,8 @@ public class Main {
 		OfertanteDAO dao1 = new OfertanteDAO();
 		//dao1.getOfertantes(19);
 		//dao.añadirOferta(17, 50);
-		//Ofertante ganador = dao1.getGanador();
-		//System.out.println(ganador.getId() +  " -> " + ganador.getCantidadOfertas() + " -> " + ganador.getSumaOfertas());
+		Ofertante ganador = dao1.getGanador();
+		System.out.println(ganador.getId() +  " -> " + ganador.getCantidadOfertas() + " -> " + ganador.getSumaOfertas());
 
 	}
 }
